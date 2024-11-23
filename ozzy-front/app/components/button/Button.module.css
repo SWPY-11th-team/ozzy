@@ -1,0 +1,21 @@
+.button {
+    background-color: #0fe597; 
+    color: black; 
+    border: none; 
+    padding: 12px 24px; 
+    border-radius: 24px; 
+    font-family: 'Noto Sans KR Bold', sans-serif;
+    font-size: 14px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .button:hover {
+    background-color: #05b475; 
+    transform: scale(1.02); 
+  }
+  
+  .button:active {
+    transform: scale(0.98); 
+  }
+  
