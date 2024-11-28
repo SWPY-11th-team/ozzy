@@ -1,0 +1,29 @@
+
+.dayAndDateContent {
+    padding: 0.5rem;
+    border: 1px solid transparent;
+}
+
+.todayContent {
+  background-color: grey;
+  color: #0FE597;
+  border-radius: 4rem;
+  border: 1px solid #0FE597;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+}
+.day {
+    margin: 0 0 8px;
+    margin-bottom: 3rem;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.date {
+    margin: 0 0 8px;
+    font-size: 1.25rem;
+    text-align: center;
+}

@@ -3,6 +3,7 @@
 import React from "react";
 import { Card } from "./components/card/Card";
 import { Button } from "./components/button/Button";
+import { WeekCalender } from "./components/weekCalender/weekCalender";
 
 export default function IndexClient() {
   const text = "재미있다";
@@ -21,6 +22,9 @@ export default function IndexClient() {
       <Button
         label="감정 분석 하기"
         onClick={handleButtonClick}
+      />
+      <WeekCalender 
+        isJournal={[1,3,6,7]}
       />
     </div>
   );
