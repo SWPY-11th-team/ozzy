@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Card } from "./components/card/Card";
+import IndexClient from "./IndexClient"; // 클라이언트 컴포넌트 임포트
 
 export default function IndexPage() {
-  var text = "재미있다";
-  return <Card title={text}
-               imageUrl={"../icon.ico"}
-               bgColor="#FFFFFF"
-  />;
+  return (
+    <div>
+      <IndexClient /> {/* 클라이언트 컴포넌트를 렌더링 */}
+    </div>
+  );
 }
 
 export const metadata: Metadata = {

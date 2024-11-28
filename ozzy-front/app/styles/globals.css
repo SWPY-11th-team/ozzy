@@ -14,3 +14,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@import './fonts.css';
+
+body {
+  font-family: 'Noto Sans KR Medium', sans-serif; /* 폰트를 전역적으로 설정 */
+}

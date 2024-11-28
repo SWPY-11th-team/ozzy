@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Noto Sans KR Medium';
+    src: url('../assets/fonts/NotoSansKR-Medium.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Noto Sans KR Bold';
+    src: url('../assets/fonts/NotoSansKR-Bold.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Medium';
+    src: url('../assets/fonts/NotoSans-Medium.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Bold';
+    src: url('../assets/fonts/NotoSans-Bold.ttf') format('truetype');
+  }
