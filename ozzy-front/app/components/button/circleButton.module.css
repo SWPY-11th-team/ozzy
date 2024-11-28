@@ -1,0 +1,28 @@
+.circleButton {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #0fe597;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .circleButton:hover {
+    background-color: #05b475;
+    transform: scale(1.02);
+  }
+  
+  .circleButton:active {
+    transform: scale(0.98); 
+  }
+  
+
+  .plusSign {
+    font-size: 30px;
+    color: #333;
+  }
+  
