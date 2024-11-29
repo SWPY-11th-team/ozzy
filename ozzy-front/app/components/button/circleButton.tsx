@@ -9,10 +9,17 @@ interface CircleButtonProps {
 }
 
 export const CircleButton = ({ isActive = true, onClick }: CircleButtonProps) => {
+  const handleClick = () => {
+    console.log("Circle Button Clicked!");
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
     <button 
       className={`${styles.circleButton} ${!isActive ? styles.inactive : ''}`} 
-      onClick={onClick}
+      onClick={handleClick}
     >
       <div className={styles.plusSign}>+</div>
     </button>
