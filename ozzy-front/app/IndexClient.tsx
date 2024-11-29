@@ -4,7 +4,6 @@ import React from "react";
 import { Card } from "./components/card/Card";
 import { Button } from "./components/button/Button";
 import { ButtonEmpty } from "./components/button/buttonEmpty";
-import { ButtonDisabled } from "./components/button/buttonDisabled";
 import { CircleButton } from "./components/button/circleButton";
 import { WeekCalender } from "./components/weekCalender/weekCalender";
 
@@ -24,16 +23,24 @@ export default function IndexClient() {
       />
       <Button
         label="감정 분석 하기"
+        isActive={true}
         onClick={handleButtonClick}
       />
-      <ButtonDisabled
-        label="다음"
+      <Button
+        label="비활성화 버튼"
+        isActive={false}
+        onClick={handleButtonClick}
       />
       <ButtonEmpty 
         label="아니오"
         onClick={handleButtonClick}
       />
       <CircleButton 
+        isActive={true}
+        onClick={handleButtonClick}
+        />
+      <CircleButton 
+        isActive={false}
         onClick={handleButtonClick}
         />
       <WeekCalender 

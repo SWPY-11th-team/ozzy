@@ -16,6 +16,12 @@
   }
   
   .button:active {
+    background-color: #0c6f4c;
     transform: scale(0.98); 
   }
   
+  .button.inactive {
+    background-color: #b0b0b0;
+    color: #5d5d5d;
+    pointer-events: none;
+  }
