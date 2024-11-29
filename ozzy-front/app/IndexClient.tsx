@@ -24,6 +24,12 @@ export default function IndexClient() {
       />
       <Button
         label="감정 분석 하기"
+        isActive={true}
+        onClick={handleButtonClick}
+      />
+      <Button
+        label="비활성화 버튼"
+        isActive={false}
         onClick={handleButtonClick}
       />
       <ButtonDisabled
@@ -34,6 +40,11 @@ export default function IndexClient() {
         onClick={handleButtonClick}
       />
       <CircleButton 
+        isActive={true}
+        onClick={handleButtonClick}
+        />
+      <CircleButton 
+        isActive={false}
         onClick={handleButtonClick}
         />
       <WeekCalender 

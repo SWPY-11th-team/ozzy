@@ -10,17 +10,22 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  
+
   .circleButton:hover {
-    background-color: #05b475;
-    transform: scale(1.02);
+    background-color: #05b475; 
+    transform: scale(1.02); 
   }
   
   .circleButton:active {
+    background-color: #0c6f4c;
     transform: scale(0.98); 
   }
   
-
+  .circleButton.inactive {
+    background-color: #b0b0b0;
+    pointer-events: none;
+  }
+  
   .plusSign {
     font-size: 30px;
     color: #333;
