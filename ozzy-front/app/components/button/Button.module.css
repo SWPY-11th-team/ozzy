@@ -20,6 +20,31 @@
     transform: scale(0.98); 
   }
   
+  .buttonEmpty {
+    background-color: transparent; 
+    color: white; 
+    border: 1px; 
+    border-color: white;
+    border-style: solid;
+    padding: 12px 24px; 
+    border-radius: 24px; 
+    font-family: 'Noto Sans KR Bold', sans-serif;
+    font-size: 14px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+
+  .buttonEmpty:hover{
+    background-color: #121212;
+    transform: scale(1.02);
+  }
+
+  .buttonEmpty:active{
+    background-color:#4e4d4d ;
+    transform: scale(0.98);
+  }
+  
   .button.inactive {
     background-color: #b0b0b0;
     color: #5d5d5d;

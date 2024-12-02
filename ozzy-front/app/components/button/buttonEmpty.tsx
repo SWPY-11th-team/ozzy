@@ -20,9 +20,8 @@ export const ButtonEmpty = ({ label, className, onClick }: ButtonEmptyProps) => 
   return (
     <button
       type="submit"
-      className={`${styles.button} ${className} button-empty`}
-      style={{ backgroundColor: 'transparent', borderColor: 'white', color: 'white', borderWidth: '1px', borderStyle: 'solid' }}
-      onClick={handleClick}
+      className={`${styles.button} ${className ? className : ''} ${styles.buttonEmpty}`}
+       onClick={handleClick} 
     >
       {label}
     </button>
