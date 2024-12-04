@@ -1,51 +1,30 @@
-"use client";
+"use client"
 
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation';  // next/navigation 사용
+
 import { Card } from "./components/card/Card";
 import { Button } from "./components/button/Button";
 import { ButtonEmpty } from "./components/button/buttonEmpty";
 import { CircleButton } from "./components/button/circleButton";
 import { WeekCalender } from "./components/weekCalender/weekCalender";
+import { LoginPage } from "./components/LoginPage";
 
 export default function IndexClient() {
-  const text = "재미있다";
+  const [isClient, setIsClient] = useState(false);
 
-  const handleButtonClick = () => {
-    console.log("Button Clicked from IndexClient");
-  };
+  useEffect(() => {
+    // 클라이언트에서만 실행되도록 분기 처리
+    if (typeof window !== 'undefined') {
+      setIsClient(true);
+    }
+  }, []);
+
+  if (!isClient) {
+    return null; // 서버에서 렌더링될 때는 아무것도 표시하지 않음
+  }
 
   return (
-    <div style={{ backgroundColor: '#3d3d3d', display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
-      <Card
-        title={text}
-        imageUrl={"/icon.ico"} // 경로를 절대 경로로 변경 (Next.js에서 public 폴더 내 파일을 참조할 때 사용)
-        bgColor="#FFFFFF"
-      />
-      <Button
-        label="감정 분석 하기"
-        isActive={true}
-        onClick={handleButtonClick}
-      />
-      <Button
-        label="비활성화 버튼"
-        isActive={false}
-        onClick={handleButtonClick}
-      />
-      <ButtonEmpty 
-        label="아니오"
-        onClick={handleButtonClick}
-      />
-      <CircleButton 
-        isActive={true}
-        onClick={handleButtonClick}
-        />
-      <CircleButton 
-        isActive={false}
-        onClick={handleButtonClick}
-        />
-      <WeekCalender 
-        isJournal={[1,3,6,7]}
-      />
-    </div>
+    <LoginPage />
   );
 }

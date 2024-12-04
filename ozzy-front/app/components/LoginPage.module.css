@@ -1,0 +1,33 @@
+.outGrid {
+    height: 100%;
+    width: 100%;
+    position: absolute;   
+    background-color: #292929;
+    text-align: center;
+}
+
+.mainText {
+    color: white;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.description {
+    color: #c6c6c6;
+    margin-bottom: 5rem;
+}
+
+.googleButton {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.kakaoButton {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    background-color: #D8FFF0;
+    margin-top: 1rem;
+
+}
