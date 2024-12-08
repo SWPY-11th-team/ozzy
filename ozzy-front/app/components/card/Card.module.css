@@ -1,12 +1,14 @@
 .card {
-    border: 1px solid #ddd;
+    border: none;
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease;
     cursor: pointer;
+    display: flex;
     align-items: center; /* Horizontally center content */
-  justify-content: center; /* Vertically center content */
+    justify-content: center; /* Vertically center content */
+    text-align: center;
 }
 
 .cardContent {
@@ -15,6 +17,7 @@
   
 .cardTitle {
     margin: 0 0 8px;
-    font-size: 1.25rem;
+    font-size: 14px;
     text-align: center;
+    white-space: nowrap; /* 텍스트를 한 줄로 설정 */
 }

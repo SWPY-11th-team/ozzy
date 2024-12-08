@@ -1,0 +1,35 @@
+.tabBar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #121212;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .tabItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+    
+  .active {
+    color: #0fe597;
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .label {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  

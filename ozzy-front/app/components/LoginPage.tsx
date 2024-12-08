@@ -4,6 +4,7 @@ import { Button } from './button/Button'
 import { useRouter } from "next/navigation";  // Next.js 라우터 훅 사용
 
 import style from './LoginPage.module.css';
+import { TabBar } from './tabBar/tabBar';
 
 export const LoginPage = (props: any) => {
     const router = useRouter();  // Next.js 라우터 훅 사용
