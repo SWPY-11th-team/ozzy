@@ -16,7 +16,7 @@ export default function RootLayout({ children }: Props) {
   return (
     <StoreProvider>
       <html lang="en">
-        <body id="root">
+        <body>
           <section className={styles.container}>
             <main className={styles.main}>{children}</main>
             {/* <footer className={styles.footer}></footer> */}
