@@ -1,17 +1,4 @@
 // emotionData.ts
-interface EmotionCard {
-    id: number;
-    title: string;
-    image: string;
-    bgColor: string; // bgColor는 필수 속성
-  }
-  
-  interface Emotion {
-    id: number;
-    name: string;
-    image: string;
-    cards: EmotionCard[]; // cards 배열은 EmotionCard 타입의 객체들로 구성
-  }
 
 export const emotions = [
     {
@@ -20,9 +7,21 @@ export const emotions = [
       image: "/emotionCard/emotionJoy.svg", // 감정 카드 이미지
       cards: [
         { id: 1, title: "흥분된다", image: "/chipHappy/chipHappyAroused.svg", bgColor:"#FCDC4C" },
-        { id: 2, title: "자유롭다", image: "/chipHappy/chipHappyFree.svg", bgColor:"FFC800" },
-        { id: 3, title: "즐겁다", image: "/chipHappy/chipHappyJoyful.svg", bgColor:"FFFF86" },
-        { id: 55, title: "즐겁다", image: "/chipHappy/chipHappyJoyful.svg", bgColor:"FFFF00" },
+        { id: 2, title: "자유롭다", image: "/chipHappy/chipHappyFree.svg", bgColor:"#FFC800" },
+        { id: 3, title: "즐겁다", image: "/chipHappy/chipHappyJoyful.svg", bgColor:"#FFFF86" },
+        { id: 4, title: "호기심", image: "/chipHappy/chipHappyCurious.svg", bgColor:"#FFFF00" },
+        { id: 5, title: "성공하다", image: "/chipHappy/chipHappySuccessful.svg", bgColor:"#ffe44d" },
+        { id: 6, title: "자신있다", image: "/chipHappy/chipHappyConfident.svg", bgColor:"#F7FD37" },
+        { id: 7, title: "존중받는다", image: "/chipHappy/chipHappyRespected.svg", bgColor:"#C1AE05" },
+        { id: 8, title: "용기있다", image: "/chipHappy/chipHappyCourageous.svg", bgColor:"#FCDC4C" },
+        { id: 9, title: "창의적이다", image: "/chipHappy/chipHappyCreative.svg", bgColor:"#F7F9B9" },
+        { id: 10, title: "희망이잇다", image: "/chipHappy/chipHappyHopeful.svg", bgColor:"#F7FD37" },
+        { id: 11, title: "사랑받는다", image: "/chipHappy/chipHappyLoving.svg", bgColor:"#FFC800" },
+        { id: 12, title: "소중하다", image: "/chipHappy/chipHappyValued.svg", bgColor:"#FFF090" },
+        { id: 13, title: "영감받는다", image: "/chipHappy/chipHappyInspired.svg", bgColor:"#C1AE05" },
+        { id: 14, title: "친밀하다", image: "/chipHappy/chipHappyIntimate.svg", bgColor:"#FFE44D" },
+        { id: 15, title: "감사하다", image: "/chipHappy/chipHappyThankful.svg", bgColor:"#FFFF86" },
+        { id: 16, title: "섬세하다", image: "/chipHappy/chipHappySensitive.svg", bgColor:"#FFFF00" },
       ],
     },
     {
@@ -30,9 +29,17 @@ export const emotions = [
       name: "슬픔",
       image: "/emotionCard/emotionSad.svg",
       cards: [
-        { id: 4, title: "고립되다", image: "/chipSad/chipSadIsolated.svg", bgColor:"FFFF00" },
-        { id: 5, title: "버려지다", image: "/chipSad/chipSadAbandoned.svg", bgColor:"FFFF00" },
-        { id: 6, title: "괴롭힘당하다", image: "/chipSad/chipSadvictimized.svg", bgColor:"FFFF00" },
+        { id: 17, title: "고립되다", image: "/chipSad/chipSadIsolated.svg", bgColor:"#45B1DB" },
+        { id: 18, title: "버려지다", image: "/chipSad/chipSadAbandoned.svg", bgColor:"#7091FD" },
+        { id: 19, title: "괴롭힘당하다", image: "/chipSad/chipSadVictimized.svg", bgColor:"#9EC4F6" },
+        { id: 20, title: "불안정", image: "/chipSad/chipSadFragile.svg", bgColor:"#5EEFFF" },
+        { id: 21, title: "무능하다", image: "/chipSad/chipSadPowerless.svg", bgColor:"#3C97FF" },
+        { id: 22, title: "창피하다", image: "/chipSad/chipSadAshamed.svg", bgColor:"#7DB1C4" },
+        { id: 23, title: "후회되다", image: "/chipSad/chipSadRemorseful.svg", bgColor:"#6AC6FF" },
+        { id: 24, title: "무감각하다", image: "/chipSad/chipSadEmpty.svg", bgColor:"#5781FF" },
+        { id: 25, title: "열등감", image: "/chipSad/chipSadInferior.svg", bgColor:"#67EDFF" },
+        { id: 26, title: "실망스럽다", image: "/chipSad/chipSadDisappointed.svg", bgColor:"#364F8D" },
+        { id: 27, title: "부끄럽다", image: "/chipSad/chipSadEmbarrassed.svg", bgColor:"#86C3FF" },
       ],
     },
     {
@@ -40,9 +47,22 @@ export const emotions = [
       name: "분노",
       image: "/emotionCard/emotionAnger.svg",
       cards: [
-        { id: 7, title: "짜증나다", image: "/chipSad/chipSadvictimized.svg", bgColor:"FFFF00" },
-        { id: 8, title: "화가 난다", image: "/chipSad/chipSadvictimized.svg", bgColor:"FFFF00" },
-        { id: 9, title: "억울하다", image: "/chipSad/chipSadvictimized.svg", bgColor:"FFFF00" },
+        { id: 28, title: "배신당하다", image: "/chipAnger/chipAngryBetrated.svg", bgColor:"#761919" },
+        { id: 29, title: "분노하다", image: "/chipAnger/chipAngryResentful.svg", bgColor:"#FD7070" },
+        { id: 30, title: "무시당하다", image: "/chipAnger/chipAngryDisrespected.svg", bgColor:"#EDB7B7" },
+        { id: 31, title: "조롱당하다", image: "/chipAnger/chipAngryRidiculed.svg", bgColor:"#910C0C" },
+        { id: 32, title: "억울하다", image: "/chipAnger/chipAngryIndignant.svg", bgColor:"#E87F7F" },
+        { id: 33, title: "침해당하다", image: "/chipAnger/chipAngryViolated.svg", bgColor:"#CE5252" },
+        { id: 34, title: "격분하다", image: "/chipAnger/chipAngryFurious.svg", bgColor:"#DF5757" },
+        { id: 35, title: "자극받다", image: "/chipAnger/chipAngryProvoked.svg", bgColor:"#FC8484" },
+        { id: 36, title: "적대적이다", image: "/chipAnger/chipAngryHostile.svg", bgColor:"#D10000" },
+        { id: 37, title: "무감각하다", image: "/chipAnger/chipAngryNumb.svg", bgColor:"#F64747" },
+        { id: 38, title: "짜증나다", image: "/chipAnger/chipAngryAnnoyed.svg", bgColor:"#FD3737" },
+        { id: 39, title: "거리두다", image: "/chipAnger/chipAngryWithdrawn.svg", bgColor:"#FFCFCF" },
+        { id: 40, title: "회의적이다", image: "/chipAnger/chipAngrySkeptical.svg", bgColor:"#A74646" },
+        { id: 41, title: "무시하다", image: "/chipAnger/chipAngryDismissive.svg", bgColor:"#E95151" },
+        { id: 42, title: "질투하다", image: "/chipAnger/chipAngryJealous.svg", bgColor:"#FF9292" },
+
       ],
     },
     {
@@ -50,9 +70,23 @@ export const emotions = [
       name: "나쁨",
       image: "/emotionCard/emotionBad.svg",
       cards: [
-        { id: 10, title: "두렵다", image: "/chipSad/chipSadvictimized.svg", bgColor:"FFFF00" },
-        { id: 11, title: "불안하다", image: "/chipSad/chipSadvictimized.svg", bgColor:"FFFF00" },
-        { id: 12, title: "겁난다", image: "/chipSad/chipSadvictimized.svg", bgColor:"FFFF00" },
+        { id: 43, title: "판단적이다", image: "/chipBad/chipBadJudgemental.svg", bgColor: "#C31890" },
+        { id: 44, title: "창피하다", image: "/chipBad/chipBadEmbarrassed.svg", bgColor: "#FB70FD" },
+        { id: 45, title: "충격받다", image: "/chipBad/chipBadAppalled.svg", bgColor: "#F49ECF" },
+        { id: 46, title: "혐오스럽다", image: "/chipBad/chipBadRevolted.svg", bgColor: "#D91A5D" },
+        { id: 47, title: "무섭다", image: "/chipBad/chipBadHorrified.svg", bgColor: "#FF2185" },
+        { id: 48, title: "망설이다", image: "/chipBad/chipBadHesitant.svg", bgColor: "#FFB9E9" },
+        { id: 49, title: "무관심하다", image: "/chipBad/chipBadIndifferent.svg", bgColor: "#FF61E2" },
+        { id: 50, title: "냉담하다", image: "/chipBad/chipBadApathetic.svg", bgColor: "#FF01C8" },
+        { id: 51, title: "압박을느끼다", image: "/chipBad/chipBadPressured.svg", bgColor: "#B90D66" },
+        { id: 52, title: "서두르다", image: "/chipBad/chipBadRushed.svg", bgColor: "#FB0AF3" },
+        { id: 53, title: "감당하기힘들다", image: "/chipBad/chipBadOverwhelmed.svg", bgColor: "#FD3789" },
+        { id: 54, title: "통제불능이다", image: "/chipBad/chipBadOutofcontrol.svg", bgColor: "#FE9CFE" },
+        { id: 55, title: "졸리다", image: "/chipBad/chipBadSleepy.svg", bgColor: "#FFA4F1" },
+        { id: 56, title: "집중이안된다", image: "/chipBad/chipBadUnfocused.svg", bgColor: "#DE37A1" },
+        { id: 57, title: "메스껍다", image: "/chipBad/chipBadNauseated.svg", bgColor: "#FF77EB" },
+        { id: 58, title: "끔찍하다", image: "/chipBad/chipBadDetestable.svg", bgColor: "#FF91D7" },
+
       ],
     },
     {
@@ -60,9 +94,19 @@ export const emotions = [
       name: "두려움",
       image: "/emotionCard/emotionFearful.svg",
       cards: [
-        { id: 13, title: "놀랍다", image: "/chipSad/chipSadvictimized.svg", bgColor:"FFFF00" },
-        { id: 14, title: "신기하다", image: "/chipSad/chipSadvictimized.svg", bgColor:"FFFF00" },
-        { id: 15, title: "어리둥절하다", image: "/chipSad/chipSadvictimized.svg", bgColor:"FFFF00" },
+        { id: 59, title: "어찌줄모르다", image: "/chipFearful/chipFearfulHelpless.svg", bgColor: "#C35118" },
+        { id: 60, title: "두렵다", image: "/chipFearful/chipFearfulFrightened.svg", bgColor: "#FD9F70" },
+        { id: 61, title: "압도당하다", image: "/chipFearful/chipFearfulOverwhelmed.svg", bgColor: "#F4C09E" },
+        { id: 62, title: "걱정하다", image: "/chipFearful/chipFearfulWorried.svg", bgColor: "#D9731A" },
+        { id: 63, title: "부족하다", image: "/chipFearful/chipFearfulInadequate.svg", bgColor: "#FF8521" },
+        { id: 64, title: "열등하다", image: "/chipFearful/chipFearfulInferior.svg", bgColor: "#D8904E" },
+        { id: 65, title: "가치없다", image: "/chipFearful/chipFearfulWorthless.svg", bgColor: "#FF854D" },
+        { id: 66, title: "안중요하다", image: "/chipFearful/chipFearfulInsignificant.svg", bgColor: "#FF5A01" },
+        { id: 67, title: "배제되었다", image: "/chipFearful/chipFearfulExcluded.svg", bgColor: "#B24A00" },
+        { id: 68, title: "학대받다", image: "/chipFearful/chipFearfulPersecuted.svg", bgColor: "#FB4E0A" },
+        { id: 69, title: "긴장하다", image: "/chipFearful/chipFearfulNervous.svg", bgColor: "#FD8337" },
+        { id: 70, title: "노출되다", image: "/chipFearful/chipFearfulExposed.svg", bgColor: "#FFBF76" },
+
       ],
     },
     {
@@ -70,9 +114,14 @@ export const emotions = [
       name: "놀람",
       image: "/emotionCard/emotionSurprised.svg",
       cards: [
-        { id: 16, title: "사랑스럽다", image: "/chipSad/chipSadvictimized.svg", bgColor:"FFFF00" },
-        { id: 17, title: "소중하다", image: "/chipSad/chipSadvictimized.svg", bgColor:"FFFF00" },
-        { id: 18, title: "따뜻하다", image: "/chipSad/chipSadvictimized.svg", bgColor:"FFFF00" },
+        { id: 71, title: "충격받다", image: "/chipSurprised/chipSurprisedShocked.svg", bgColor:"#732AB3" },
+        { id: 72, title: "실망하다", image: "/chipSurprised/chipSurprisedDismayed.svg", bgColor:"#CC70FD" },
+        { id: 73, title: "이상이깨지다", image: "/chipSurprised/chipSurprisedDisillusioned.svg", bgColor:"#E5B7ED" },
+        { id: 74, title: "혼란스럽다", image: "/chipSurprised/chipSurprisedPerplexed.svg", bgColor:"#4D1B57" },
+        { id: 75, title: "어이없다", image: "/chipSurprised/chipSurprisedAstonished.svg", bgColor:"#C27FE8" },
+        { id: 76, title: "경탄하다", image: "/chipSurprised/chipSurprisedAwe.svg", bgColor:"#8A52CE" },
+        { id: 77, title: "간절하다", image: "/chipSurprised/chipSurprisedEager.svg", bgColor:"#BB57DF" },
+        { id: 78, title: "에너지넘친다", image: "/chipSurprised/chipSurprisedEnergetic.svg", bgColor:"#BA84FC" },
       ],
     },
     {
@@ -80,9 +129,9 @@ export const emotions = [
       name: "중립",
       image: "/emotionCard/emotionNeutral.svg",
       cards: [
-        { id: 19, title: "싫다", image: "/chipSad/chipSadvictimized.svg" },
-        { id: 20, title: "불쾌하다", image: "/chipSad/chipSadvictimized.svg" },
-        { id: 21, title: "꺼려지다", image: "/chipSad/chipSadvictimized.svg" },
+        { id: 79, title: "싫다", image: "/chipSad/chipSadvictimized.svg" },
+        { id: 80, title: "불쾌하다", image: "/chipSad/chipSadvictimized.svg" },
+        { id: 81, title: "꺼려지다", image: "/chipSad/chipSadvictimized.svg" },
       ],
     },
   ];

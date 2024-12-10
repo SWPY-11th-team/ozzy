@@ -1,23 +1,34 @@
 .card {
-    border: none;
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease;
     cursor: pointer;
+    background-color: var(--bgColor, #ffffff);
     display: flex;
-    align-items: center; /* Horizontally center content */
-    justify-content: center; /* Vertically center content */
+    align-items: center;
+    justify-content: center;
     text-align: center;
-}
-
-.cardContent {
-    padding: 16px;
-}
+    white-space: nowrap;
+  }
   
-.cardTitle {
-    margin: 0 0 8px;
-    font-size: 14px;
+  .card:hover {
+    background-color: #0FE597; 
+    white-space: nowrap;
+  }
+  
+  .card.selected {
+    background-color: #05B475;
+    border: 1px solid #79FCCB;
+    white-space: nowrap;
+  }
+  
+  .cardContent {
+    padding: 16px;
     text-align: center;
-    white-space: nowrap; /* 텍스트를 한 줄로 설정 */
-}
+  }
+  
+  .cardTitle {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }

@@ -10,11 +10,11 @@ interface Tab {
 
 const tabs: Tab[] = [
   { id: 1, label: "다이어리",
-     iconActive: "/icons/iconDiary.svg", iconInactive: "/icons/iconCheck.svg" },
+     iconActive: "/icons/iconDiary.svg", iconInactive: "/icons/iconDiaryInactive.svg" },
   { id: 2, label: "활동",
-     iconActive: "/icons/iconHealing.svg", iconInactive: "/icons/iconBack.svg" },
+     iconActive: "/icons/iconHealing.svg", iconInactive: "/icons/iconHealingInactive.svg" },
   { id: 3, label: "감정 서적",
-     iconActive: "/icons/iconLog.svg", iconInactive: "/icons/iconAgain.svg" },
+     iconActive: "/icons/iconLog.svg", iconInactive: "/icons/iconLogInactive.svg" },
 ];
 
 export const TabBar = () => {

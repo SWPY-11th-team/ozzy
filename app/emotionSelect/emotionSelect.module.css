@@ -63,8 +63,8 @@
   }
   
   .emotionCard img {
-    width: 300px; 
-    height: 300px;
+    width: 174px; 
+    height: 174px;
   }
   
   .cardList {
@@ -90,5 +90,60 @@
   .buttonContainer > button {
     flex: 1;
   }
+/* 선택된 감정 박스 */
+.selectedEmotions {
+  margin: 16px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 
-  
+.selectedEmotion {
+  background-color: transparent;
+  border: 1px solid #05b475;
+  border-radius: 16px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* 직접 입력 필드 */
+.customInput {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  background-color: #d3d3d3;
+  color: #000;
+}
+
+.customInput:focus {
+  outline: none;
+  border-color: #0fe597;
+  box-shadow: 0 0 4px rgba(15, 229, 151, 0.5);
+}
+
+/* 선택된 감정 개수 */
+.selectionCount {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  margin-left: auto;
+  background-color: #333;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
