@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+npm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.swp
+
+# Next.js specific
+.next/
+out/
+
+# Ignore all .log files
+*.log
+
+# Git merge conflict files
+*.orig
+
+# Specific to npm
+package-lock.json
+
+# Other project-specific files
+**/debug/
