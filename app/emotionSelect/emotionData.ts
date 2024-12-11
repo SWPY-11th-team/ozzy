@@ -129,9 +129,9 @@ export const emotions = [
       name: "중립",
       image: "/emotionCard/emotionNeutral.svg",
       cards: [
-        { id: 79, title: "싫다", image: "/chipSad/chipSadvictimized.svg" },
-        { id: 80, title: "불쾌하다", image: "/chipSad/chipSadvictimized.svg" },
-        { id: 81, title: "꺼려지다", image: "/chipSad/chipSadvictimized.svg" },
+        { id: 79, title: "싫다", image: "/chipSad/chipSadvictimized.svg", bgColor: "#FFFFFF" },
+        { id: 80, title: "불쾌하다", image: "/chipSad/chipSadvictimized.svg", bgColor: "#FFFFFF" },
+        { id: 81, title: "꺼려지다", image: "/chipSad/chipSadvictimized.svg", bgColor: "#FFFFFF" },
       ],
     },
   ];
