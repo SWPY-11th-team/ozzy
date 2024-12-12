@@ -18,7 +18,6 @@ export default function IndexClient() {
     if (typeof window !== "undefined") {
       setIsClient(true);
     }
-    console.log(typeof window);
   }, []);
 
   if (!isClient) {
