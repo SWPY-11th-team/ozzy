@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter } from 'next/navigation';  // next/navigation 사용
+import { useRouter } from "next/navigation"; // next/navigation 사용
 
 import { Card } from "./components/card/Card";
 import { Button } from "./components/button/Button";
@@ -15,16 +15,15 @@ export default function IndexClient() {
 
   useEffect(() => {
     // 클라이언트에서만 실행되도록 분기 처리
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       setIsClient(true);
     }
+    console.log(typeof window);
   }, []);
 
   if (!isClient) {
     return null; // 서버에서 렌더링될 때는 아무것도 표시하지 않음
   }
 
-  return (
-    <LoginPage />
-  );
+  return <LoginPage />;
 }
