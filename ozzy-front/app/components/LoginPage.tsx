@@ -12,11 +12,13 @@ export const LoginPage = (props: any) => {
     const [refreshToken, setRefreshToken] = useState<string | null>(null);
 
     const googleLogin = () => {
-        window.location.href = 'http://localhost:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000&mode=login';
+        // window.location.href = 'http://localhost:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000&mode=login';
+        window.location.href = 'http://www.ozzy-backend.duckdns.org/oauth2/authorization/google?redirect_uri=http://localhost:3000&mode=login';
     };
 
     const kakaoLogin = () => {
-        window.location.href = 'http://localhost:8080/oauth2/authorization/kakao?redirect_uri=http://localhost:3000&mode=login';
+        // window.location.href = 'http://localhost:8080/oauth2/authorization/kakao?redirect_uri=http://localhost:3000&mode=login';
+        window.location.href = 'http://www.ozzy-backend.duckdns.org/oauth2/authorization/kakao?redirect_uri=http://localhost:3000&mode=login';
     };
 
     // redirect
