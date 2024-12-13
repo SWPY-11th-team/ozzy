@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "./button/Button";
+import { Button } from "../components/button/Button";
 import { useRouter, useSearchParams } from "next/navigation"; // Next.js 라우터 훅 사용
 
 import style from "./LoginPage.module.css";
-import { TabBar } from "./tabBar/tabBar";
+import { TabBar } from "../components/tabBar/tabBar";
 import { useEffect, useState } from "react";
 
 export const LoginPage = (props: any) => {
@@ -28,20 +28,32 @@ export const LoginPage = (props: any) => {
   };
 
   useEffect(() => {
-    const token = searchParams.get("accessToken");
-    const refresh = searchParams.get("refreshToken");
+    if (!process.env.NEXT_PUBLIC_API_URL || !process.env.NEXT_PUBLIC_REDIRECT_URI) {
+      console.error("환경 변수가 설정되지 않았습니다.");
+      return;
+    }
+    
+    const tokenFromLocalStorage = localStorage.getItem("accessToken");
+  
+    if (tokenFromLocalStorage) {
+      console.log("이미 로그인된 사용자, /dashboard로 이동");
+      router.push("/diaryInput");
+      return; 
+    }
+  
+    const tokenFromURL = searchParams.get("accessToken");
+    const refreshTokenFromURL = searchParams.get("refreshToken");
+  
+    if (tokenFromURL && refreshTokenFromURL) {
+      localStorage.setItem("accessToken", tokenFromURL);
+      localStorage.setItem("refreshToken", refreshTokenFromURL);
+      setAccessToken(tokenFromURL);
+      setRefreshToken(refreshTokenFromURL);
 
-    if (token && refresh) {
-      // 여기서 setAccessToken과 setRefreshToken은
-      // 상태 관리 라이브러리나 컨텍스트를 통해 처리해야 합니다.
-      console.log("accessToken :", token);
-      console.log("refresh :", refresh);
-
-      // Next.js의 라우터를 사용하여 페이지 이동
       router.push("/terms");
     }
   }, [searchParams, router]);
-
+  
   return (
     <div className={style.outGrid}>
       <img></img>
@@ -62,8 +74,8 @@ export const LoginPage = (props: any) => {
         className={style.kakaoButton}
         onClick={handleKakaoLogin}
       />
-
-      <button onClick={navigateToTerms}>Go to Terms Page</button>
     </div>
   );
 };
+
+export default LoginPage;

@@ -1,9 +1,11 @@
 .outGrid {
     height: 100%;
     width: 100%;
-    position: absolute;   
     background-color: #292929;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .mainText {
