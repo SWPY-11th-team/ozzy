@@ -20,3 +20,8 @@ a {
 body {
   font-family: 'Noto Sans KR Medium', sans-serif; /* 폰트를 전역적으로 설정 */
 }
+
+.container {
+  max-width: 600px; /* 원하는 최대 너비 설정 */
+  margin: 0 auto;    /* 가운데 정렬 */
+}

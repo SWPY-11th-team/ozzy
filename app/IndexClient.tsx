@@ -8,7 +8,7 @@ import { Button } from "./components/button/Button";
 import { ButtonEmpty } from "./components/button/buttonEmpty";
 import { CircleButton } from "./components/button/circleButton";
 import { WeekCalender } from "./components/weekCalender/weekCalender";
-import { LoginPage } from "./components/LoginPage";
+import { LoginPage } from "./login/page";
 
 export default function IndexClient() {
   const [isClient, setIsClient] = useState(false);
