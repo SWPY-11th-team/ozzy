@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Popup } from "../components/popUp/popUp";
 import styles from "./diaryInput.module.css";
 import { useRouter } from "next/navigation";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export default function DiaryInput() {
   const router = useRouter();
@@ -35,7 +36,7 @@ export default function DiaryInput() {
     router.push(`/emotionSelect?addEmotionSeq=${addEmotionSeq}&diaryDate=${diaryDate}`);
   };
 
-  const token = localStorage.getItem('accessToken');
+  const token = useLocalStorage();
 
   const saveDiary = async (diaryDate: string) => {
     try {
