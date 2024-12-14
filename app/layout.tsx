@@ -17,7 +17,8 @@ export default function RootLayout({ children }: Props) {
   const isHiddenTabBar =
     pathname.startsWith('/terms') || // /terms 및 하위 경로 포함
     pathname === '/login' ||
-    pathname === '/nickname';
+    pathname === '/nickname' ||
+    pathname === '/';
 
   return (
     <StoreProvider>
