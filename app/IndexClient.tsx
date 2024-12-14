@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // next/navigation 사용
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation'; // next/navigation 사용
 
-import { Card } from "./components/card/Card";
-import { Button } from "./components/button/Button";
-import { ButtonEmpty } from "./components/button/buttonEmpty";
-import { CircleButton } from "./components/button/circleButton";
-import { WeekCalender } from "./components/weekCalender/weekCalender";
-import { LoginPage } from "./login/page";
+import { Card } from './components/card/Card';
+import { Button } from './components/button/Button';
+import { ButtonEmpty } from './components/button/buttonEmpty';
+import { CircleButton } from './components/button/circleButton';
+import { WeekCalender } from './components/weekCalender/weekCalender';
+import LoginPage from './login/page';
 
 export default function IndexClient() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     // 클라이언트에서만 실행되도록 분기 처리
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       setIsClient(true);
     }
   }, []);
