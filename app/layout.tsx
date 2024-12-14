@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ozzy",
     description: "ozzy에 일기를 쓰고 당신의 감정을 알아보세요",
-    url: "https://delightful-fairy-4f6927.netlify.app/",
+    url: `${process.env.NEXT_PUBLIC_REDIRECT_URI}`,
     siteName: "ozzy",
     images: [
       {

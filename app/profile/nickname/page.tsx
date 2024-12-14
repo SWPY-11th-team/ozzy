@@ -3,12 +3,12 @@
 import React, { useState, useEffect } from "react";
 import styles from "./NicknamePage.module.css";
 import { useRouter } from "next/navigation";
+import { useLocalStorage } from "@/app/hooks/useLocalStorage";
 
 const NicknamePage = () => {
-    const router = useRouter();
     const [nickname, setNickname] = useState<string>("");
     const [errorMessage, setErrorMessage] = useState<string>("");
-    const token = localStorage.getItem('accessToken');
+    const token = useLocalStorage();
 
     // 첫 렌더링 시 닉네임 가져오기
     useEffect(() => {
@@ -31,7 +31,7 @@ const NicknamePage = () => {
         setNickname(data.body.nickName);
     };
 
-    const updateNickName = async (nickname) => {
+    const updateNickName = async (nickname: string) => {
 
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/update`, {
             method: 'POST',
