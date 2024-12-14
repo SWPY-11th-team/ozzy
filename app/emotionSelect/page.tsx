@@ -5,6 +5,7 @@ import { emotions } from "./emotionData"; // 감정 데이터 가져오기
 import { ButtonEmpty } from "../components/button/buttonEmpty";
 import { Card } from "../components/card/Card";
 import { Button } from "../components/button/Button";
+import { RecordPopup } from "../components/registerPopUp/registerPopUp";
 import styles from "./emotionSelect.module.css"
 
 export default function EmotionSelectionPage() {
@@ -62,24 +63,29 @@ export default function EmotionSelectionPage() {
       setCustomEmotion(""); // 입력 필드 초기화
     }
   };
+  
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [diaryCount, setDiaryCount] = useState(1); // 일기 입력 개수
+
+  const handleOpenPopup = () => setIsPopupVisible(true);
+  const handleClosePopup = () => setIsPopupVisible(false);
 
   return (
     <div className={styles.container}>
-    
-    <div className={styles.header}>
-      <button onClick={handleBackClick} className={styles.backButton}>
-        <img
-          src="/icons/iconBack.svg"
-          alt="뒤로 가기"
-          width="24"
-          height="24"
-          className={styles.icon}
-        />
-      </button>
-    </div>
+      <div className={styles.header}>
+        <button onClick={handleBackClick} className={styles.backButton}>
+          <img
+            src="/icons/iconBack.svg"
+            alt="뒤로 가기"
+            width="24"
+            height="24"
+            className={styles.icon}
+          />
+        </button>
+      </div>
 
       {/* 상단 텍스트 */}
-      <h1 className={styles.title}>일기를 쓰면서 어떤 감정을 느끼셨나요?</h1>
+      <h1 className={styles.title}>일기를 쓰면서<br></br>어떤 감정을 느끼셨나요?</h1>
       <p className={styles.subtitle}>
         스스로 감정을 인식할 때 자기이해능력이 높아져요!<br></br>
         감정을 모르겠다면 AI가 분석해드릴게요.
@@ -149,17 +155,22 @@ export default function EmotionSelectionPage() {
       />
 
 
-      {/* 하단 버튼 */}
-      <div className={styles.buttonContainer}>
+{/* 하단 버튼 */}
+<div className={styles.buttonContainer}>
         <ButtonEmpty
           label="건너뛸게요"
-          onClick={() => console.log("건너뛰기 클릭됨")}
+          onClick={handleOpenPopup} // 팝업 열기
         />
         <Button
           label="추가할게요"
-          onClick={() => console.log("추가하기 클릭됨")}
+          onClick={handleOpenPopup} // 팝업 열기
         />
       </div>
+
+      {/* 팝업 */}
+      {isPopupVisible && (
+        <RecordPopup diaryCount={diaryCount} onClose={handleClosePopup} />
+      )}
     </div>
   );
 }
