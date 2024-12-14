@@ -1,59 +1,79 @@
 .outGrid {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+    padding: 20px;
+    background-color: #000000; /* 배경 색 검정 */
+    color: white;
     min-height: 100vh;
-    background-color: #292929;
-}
-
-.mainText {
-    color: white;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-    margin-left: 1rem;
+  }
+  
+  .mainText {
+    font-size: 20px; 
+    font-weight: bold;
     margin-bottom: 62px;
-}
+  }
+  
+  .allCheckBoxGrid {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    margin: 15px 0;
+    margin-bottom: 24px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #333333; /* 박스 배경 색 */
+    cursor: pointer;
+  }
+  
+  .checkBoxGrid {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 14px;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .checkMark {
+    font-size: 18px;
+  }
+  
+  .checkBoxText {
+    width: 75%;
+    text-align: left;
+  }
 
-.allCheckBoxGrid {
+  .viewButton {
+    background-color: #555555; /* 보기 버튼 배경색 */
     color: white;
-    font-size: 10px;
-    margin: 1rem;
-    margin-bottom: 1rem;
-    background-color: #4E4D4D;
-    padding-bottom: .75rem;
-    padding-top: 0.75rem;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
     border-radius: 5px;
-}
+    cursor: pointer;
+  }
+  
+  .invisibleButton {
+    visibility:hidden;
+    padding: 5px 10px;
+  }
 
-.checkBoxGrid {
-    color: white;
-    font-size: 10px;
-    margin: 1rem;
-}
-
-.checkMark {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-}
-.smallDescription {
-    color: white;
-    font-size: 10px;
-    margin: 1rem;
-    margin-bottom: 56px;
-}
-
-.nextButton {
-    width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-}
-
-.deviderLine {
-    width: 95%;
-    border-bottom: 1px solid #aaa;
-    line-height: 0.1em;
-    margin-top: 68px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-}
+  .nextButton {
+    margin-top: 20px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .smallDescription {
+    font-size: 14px;
+    color: gray;
+    margin-top: 20px;
+  }
+  
+  .deviderLine {
+    border-top: 1px solid gray;
+    margin: 20px 0;
+  }
+  

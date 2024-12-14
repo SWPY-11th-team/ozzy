@@ -1,12 +1,12 @@
-"use client"
+'use client';
 
-import type { ReactNode } from "react";
-import { StoreProvider } from "./StoreProvider";
-import { usePathname } from "next/navigation";
-import { TabBar } from "./components/tabBar/tabBar"; 
+import type { ReactNode } from 'react';
+import { StoreProvider } from './StoreProvider';
+import { usePathname } from 'next/navigation';
+import { TabBar } from './components/tabBar/tabBar';
 
-import "./styles/globals.css";
-import styles from "./styles/layout.module.css";
+import './styles/globals.css';
+import styles from './styles/layout.module.css';
 
 interface Props {
   readonly children: ReactNode;
@@ -14,17 +14,18 @@ interface Props {
 
 export default function RootLayout({ children }: Props) {
   const pathname = usePathname(); // 현재 경로 가져오기
-  const isHiddenTabBar = (pathname === "/terms") || (pathname === "/login");
+  const isHiddenTabBar =
+    pathname.startsWith('/terms') || // /terms 및 하위 경로 포함
+    pathname === '/login' ||
+    pathname === '/nickname';
 
   return (
     <StoreProvider>
-      <html lang='en'>
+      <html lang="en">
         <body>
           <section className="container">
             <main className={styles.main}>{children}</main>
-            {!isHiddenTabBar && (
-              <TabBar />
-            )}
+            {!isHiddenTabBar && <TabBar />}
           </section>
         </body>
       </html>
