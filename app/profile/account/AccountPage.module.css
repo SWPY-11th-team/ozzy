@@ -1,0 +1,51 @@
+.container {
+    padding: 20px;
+    background-color: #000;
+    color: #fff;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.backButton {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.menu {
+    margin-top: 20px;
+}
+
+.menuItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+}
+
+.arrow {
+    font-size: 18px;
+    color: #999;
+}
+
+.logout {
+    color: #ff6666;
+}
+
+.deleteAccount {
+    color: #ff4444;
+}

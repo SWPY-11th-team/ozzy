@@ -1,0 +1,47 @@
+.container {
+    background-color: #000; /* 배경 색상 */
+    color: #fff; /* 텍스트 색상 */
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.header {
+    margin-bottom: 40px;
+}
+
+.greeting {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.subText {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.highlight {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+.menu {
+    border-top: 1px solid #333;
+    padding-top: 10px;
+}
+
+.menuItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+}
+
+.arrow {
+    font-size: 16px;
+    color: #888;
+}
