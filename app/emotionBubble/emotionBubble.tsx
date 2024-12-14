@@ -70,7 +70,7 @@ const EmotionBubbles: React.FC = () => {
   const positions: Position[] = [];
   const data = {
     datasets: emotions.map((emo) => {
-      const radius = Math.max(emo.percentage * 1.2, 15); // 최소 크기 키움
+      const radius = Math.max(emo.percentage * 0.8, 15); // 최소 크기 키움
       const { x, y } = generateNonOverlappingPosition(positions, radius);
       positions.push({ x, y, r: radius });
       return {
@@ -105,8 +105,8 @@ const EmotionBubbles: React.FC = () => {
   return (
     <div
       style={{
-        width: "500px",
-        height: "500px",
+        width: "350px",
+        height: "350px",
         backgroundColor: "#000",
         padding: "20px",
       }}
