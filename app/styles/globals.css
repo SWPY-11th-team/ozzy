@@ -22,7 +22,7 @@ body {
 }
 
 .container {
-  max-width: 600px; /* 원하는 최대 너비 설정 */
+  max-width: 390px; /* 원하는 최대 너비 설정 */
   margin: 0 auto;    /* 가운데 정렬 */
   background-color: #000000;
 }
