@@ -4,6 +4,7 @@ import { StoreProvider } from './StoreProvider';
 import './styles/globals.css';
 import styles from './styles/layout.module.css';
 import { Metadata } from 'next';
+import { TabBar } from './components/tabBar/tabBar';
 
 interface Props {
   readonly children: ReactNode;
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: Props) {
         <body>
           <section className="container">
             <main className={styles.main}>{children}</main>
+            <TabBar />
           </section>
         </body>
       </html>

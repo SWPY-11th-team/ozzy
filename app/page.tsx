@@ -1,17 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation"; // next/navigation 사용
 import IndexClient from "./IndexClient";
-import { TabBar } from "./components/tabBar/tabBar";
 
 export default function IndexPage() {
   const [isClient, setIsClient] = useState(false);
-    const pathname = usePathname(); // 현재 경로 가져오기
-    const isHiddenTabBar =
-      pathname.startsWith('/terms') || // /terms 및 하위 경로 포함
-      pathname === '/login' ||
-      pathname === '/nickname';
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -26,7 +19,6 @@ export default function IndexPage() {
   return (
     <div>
       <IndexClient />
-      {!isHiddenTabBar && <TabBar />}
     </div>
   );
 }

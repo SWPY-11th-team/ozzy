@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import styles from './tabBar.module.css';
+import { usePathname } from 'next/navigation';
 import { useRouter } from "next/navigation";
 
 interface Tab {
@@ -38,6 +39,12 @@ const tabs: Tab[] = [
 
 export const TabBar = () => {
   const [activeTab, setActiveTab] = useState<number>(1);
+      const pathname = usePathname(); // 현재 경로 가져오기
+      const isHiddenTabBar =
+        pathname.startsWith('/terms') || // /terms 및 하위 경로 포함
+        pathname === '/login' ||
+        pathname === '/nickname';
+  
   const router = useRouter(); 
 
   const handleTabClick = (id: number, path: string) => {
@@ -46,7 +53,7 @@ export const TabBar = () => {
   };
 
   return (
-    <div className={styles.tabBar}>
+    <div className={styles.tabBar} style={{visibility: isHiddenTabBar ? "hidden" : "visible"}}>
       {tabs.map((tab) => (
         <div
           key={tab.id}
