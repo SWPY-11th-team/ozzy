@@ -1,5 +1,5 @@
 .button {
-    background-color: #0fe597; 
+    background-color: #0FE597; 
     color: black; 
     border: none; 
     padding: 12px 24px; 
@@ -11,15 +11,25 @@
   }
   
   .button:hover {
-    background-color: #05b475; 
+    background-color: #05B475; 
     transform: scale(1.02); 
   }
   
+  .button:click{
+    background-color: 0C6F4C;
+  }
+  
   .button:active {
-    background-color: #0c6f4c;
+    background-color: #0FE597;
     transform: scale(0.98); 
   }
   
+  .button.inactive {
+    background-color: #C6C6C6;
+    color: #5d5d5d;
+    pointer-events: none;
+  }
+
   .buttonEmpty {
     background-color: transparent; 
     color: white; 
@@ -45,8 +55,3 @@
     transform: scale(0.98);
   }
   
-  .button.inactive {
-    background-color: #b0b0b0;
-    color: #5d5d5d;
-    pointer-events: none;
-  }
