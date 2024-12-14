@@ -7,11 +7,13 @@ import { Card } from "../components/card/Card";
 import { Button } from "../components/button/Button";
 import { RecordPopup } from "../components/registerPopUp/registerPopUp";
 import styles from "./emotionSelect.module.css"
+import { useSearchParams } from "next/navigation";
 
 export default function EmotionSelectionPage() {
   const [currentEmotionIndex, setCurrentEmotionIndex] = useState(0); // 현재 감정의 인덱스
   const [selectedCards, setSelectedCards] = useState<string[]>([]); // 카드 타이틀을 저장
   const [customEmotion, setCustomEmotion] = useState<string>("");
+  const searchParams = useSearchParams();
 
   // 현재 선택된 감정
   const currentEmotion = emotions[currentEmotionIndex];
@@ -68,7 +70,68 @@ export default function EmotionSelectionPage() {
   const [diaryCount, setDiaryCount] = useState(1); // 일기 입력 개수
 
   const handleOpenPopup = () => setIsPopupVisible(true);
-  const handleClosePopup = () => setIsPopupVisible(false);
+  const handleClosePopup = () => {setIsPopupVisible(false);};
+
+
+  const token = localStorage.getItem('accessToken');
+  const addEmotionSeq = searchParams.get('addEmotionSeq');
+  const diaryDate = searchParams.get('diaryDate');
+
+  const handleRegisterClick = async () => {
+     await addEmotion();
+     await getDiaryCount();
+
+     handleOpenPopup();
+  };
+
+  const addEmotion = async () => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/add-emotion`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `${token}`
+        },
+        body: JSON.stringify({
+          addEmotionSeq: addEmotionSeq,
+          emotions: selectedCards.join(',')
+        }),
+      })
+
+      if (response.status !== 200) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
+
+  const getDiaryCount = async () => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/diary/count?date=${diaryDate}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `${token}`
+        },
+      })
+
+      if (response.status!== 200) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      setDiaryCount(result.body.count);
+      return result;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -163,7 +226,7 @@ export default function EmotionSelectionPage() {
         />
         <Button
           label="추가할게요"
-          onClick={handleOpenPopup} // 팝업 열기
+          onClick={handleRegisterClick} // 팝업 열기
         />
       </div>
 
