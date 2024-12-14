@@ -31,7 +31,7 @@ const NicknamePage = () => {
         setNickname(data.body.nickName);
     };
 
-    const updateNickName = async (nickname) => {
+    const updateNickName = async (nickname: string) => {
 
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/update`, {
             method: 'POST',
