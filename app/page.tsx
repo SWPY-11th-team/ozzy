@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import IndexClient from "./IndexClient";
+import { useEffect, useState } from 'react';
+import IndexClient from './IndexClient';
 
 export default function IndexPage() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       setIsClient(true); // 클라이언트에서만 실행되도록 설정
     }
   }, []);

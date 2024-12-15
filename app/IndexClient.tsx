@@ -1,13 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation'; // next/navigation 사용
-
-import { Card } from './components/card/Card';
-import { Button } from './components/button/Button';
-import { ButtonEmpty } from './components/button/buttonEmpty';
-import { CircleButton } from './components/button/circleButton';
-import { WeekCalender } from './components/weekCalender/weekCalendar';
+import { useState, useEffect } from 'react';
 import LoginPage from './login/page';
 
 export default function IndexClient() {

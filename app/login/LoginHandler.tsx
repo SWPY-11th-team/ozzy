@@ -34,7 +34,7 @@ const LoginHandler = (props: any) => {
 
     if (tokenFromLocalStorage) {
       console.log('이미 로그인된 사용자');
-      router.push('/diaryInput');
+      router.push('/diary');
       return;
     }
 
