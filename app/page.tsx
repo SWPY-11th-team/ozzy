@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation"; // next/navigation 사용
 import IndexClient from "./IndexClient";
 
 export default function IndexPage() {

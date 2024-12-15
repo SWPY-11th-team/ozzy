@@ -1,32 +1,41 @@
-'use client';
-
 import type { ReactNode } from 'react';
 import { StoreProvider } from './StoreProvider';
-import { usePathname } from 'next/navigation';
-import { TabBar } from './components/tabBar/tabBar';
 
 import './styles/globals.css';
 import styles from './styles/layout.module.css';
+import { Metadata } from 'next';
+import { TabBar } from './components/tabBar/tabBar';
 
 interface Props {
   readonly children: ReactNode;
 }
 
-export default function RootLayout({ children }: Props) {
-  const pathname = usePathname(); // 현재 경로 가져오기
-  const isHiddenTabBar =
-    pathname.startsWith('/terms') || // /terms 및 하위 경로 포함
-    pathname === '/login' ||
-    pathname === '/nickname' ||
-    pathname === '/';
+export const metadata: Metadata = {
+  title: 'ozzy',
+  description: '당신의 감정을 알려주는 일기 서비스',
+  keywords: ['감정', '일기', '감정일기', 'AI일기'],
+  openGraph: {
+    title: 'ozzy',
+    description: 'ozzy에 일기를 쓰고 당신의 감정을 알아보세요',
+    url: `${process.env.NEXT_PUBLIC_REDIRECT_URI}`,
+    siteName: 'ozzy',
+    images: [
+      {
+        url: '/app/icon.ico',
+      },
+    ],
+    type: 'website',
+  },
+};
 
+export default function RootLayout({ children }: Props) {
   return (
     <StoreProvider>
       <html lang="en">
         <body>
           <section className="container">
             <main className={styles.main}>{children}</main>
-            {!isHiddenTabBar && <TabBar />}
+            <TabBar />
           </section>
         </body>
       </html>
