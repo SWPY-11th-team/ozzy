@@ -1,17 +1,32 @@
 .calendarContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
     width: 100%;
-    max-width: 600px; /* 최대 너비 제한 */
+    max-width: 390px; /* 최대 너비 제한 */
     margin: 0 auto; /* 가운데 정렬 */
     padding: 1rem;
-    background-color: black;
+    background-color: #121212;
     color: white;
+    min-height: 100vh;
 }
-  
+
+.year {
+    margin-top: 1rem;
+    opacity: 60%;
+}
+
+.month {
+    margin-bottom: 1rem;
+    font-size: 24px;
+}
+
 .reactCalendar {
     width: 100%; /* 부모 컨테이너에 맞춤 */
     height: auto;
     font-size: 1rem;
-    background-color: black;
+    background-color: #121212;
     color: white; /* 기본 텍스트 색상 */
     border: none;
     border-radius: 10px;
@@ -21,8 +36,35 @@
     color: white; /* 날짜 텍스트 색 */
     background: transparent;
     border-radius: 8px; /* 타일 모양 */
+    height: 80px; /* 타일 높이 고정 */
+    min-height: 80px; /* 최소 높이 설정 */
+    justify-content: top;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.tileContentContainer { 
+    display: flex;
+    gap: 0px; 
+    flex-direction: column; /* 가로가 아닌 세로로 배치 */
+    align-items: center; /* 가운데 정렬 */
+    height: 40px;
+   
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    color: white;
+    background-color: #121212;
+}
+
+.iconBtn {
+    background-color: #121212;
+    border: 0;
+}
 @media (max-width: 768px) {
 .react-calendar {
     font-size: 0.8rem; /* 작은 화면에서 글씨 크기 조정 */
