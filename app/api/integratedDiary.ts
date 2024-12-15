@@ -29,12 +29,12 @@ export const fetchDiary = async (diaryDate: string, token: string | null, setAdd
 
     if (addEmotionSeq) {
       const addEmotionData = await fetchAddEmotion(addEmotionSeq, token);
-      setAddEmotionData(addEmotionData); // 상태 업데이트
+      setAddEmotionData(addEmotionData.body); // 상태 업데이트
     }
 
     if (emotionCardSeq) {
       const emotionCardData = await fetchEmotionCard(emotionCardSeq, token);
-      setEmotionCardData(emotionCardData); // 상태 업데이트
+      setEmotionCardData(emotionCardData.body); // 상태 업데이트
     }
 
     return data;

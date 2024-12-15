@@ -82,7 +82,6 @@ const WeekCalendar = ({
     setSelectedDate(date);
     dateHandler(date);
   };
-  console.log(currentDate);
 
   return (
     <div style={{ display: 'flex', width: '100%', backgroundColor: '#121212' }}>

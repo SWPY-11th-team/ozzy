@@ -1,25 +1,41 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { emotions } from './emotionData'; // 감정 데이터 가져오기
 import { ButtonEmpty } from '../components/button/buttonEmpty';
 import { Card } from '../components/card/Card';
 import { Button } from '../components/button/Button';
 import { RecordPopup } from '../components/registerPopUp/registerPopUp';
 import styles from './emotionSelect.module.css';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
-export default function EmotionSelectionPage() {
+function SearchParamsWrapper({
+  children,
+}: {
+  children: (params: {
+    addEmotionSeq: string | null;
+    diaryDate: string | null;
+  }) => React.ReactNode;
+}) {
+  const searchParams = useSearchParams();
+  const addEmotionSeq = searchParams.get('addEmotionSeq');
+  const diaryDate = searchParams.get('diaryDate');
+
+  return children({ addEmotionSeq, diaryDate });
+}
+
+function EmotionSelectionContent({
+  addEmotionSeq,
+  diaryDate,
+}: {
+  addEmotionSeq: any;
+  diaryDate: any;
+}) {
+  const router = useRouter();
   const [currentEmotionIndex, setCurrentEmotionIndex] = useState(0); // 현재 감정의 인덱스
   const [selectedCards, setSelectedCards] = useState<string[]>([]); // 카드 타이틀을 저장
   const [customEmotion, setCustomEmotion] = useState<string>('');
-  const [searchParams] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return new URLSearchParams(window.location.search);
-    }
-    return new URLSearchParams();
-  });
 
   // 현재 선택된 감정
   const currentEmotion = emotions[currentEmotionIndex];
@@ -81,11 +97,10 @@ export default function EmotionSelectionPage() {
   const handleOpenPopup = () => setIsPopupVisible(true);
   const handleClosePopup = () => {
     setIsPopupVisible(false);
+    router.push(`/diary`);
   };
 
   const token = useLocalStorage();
-  const addEmotionSeq = searchParams.get('addEmotionSeq');
-  const diaryDate = searchParams.get('diaryDate');
 
   const handleRegisterClick = async () => {
     await addEmotion();
@@ -156,98 +171,115 @@ export default function EmotionSelectionPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <button onClick={handleBackClick} className={styles.backButton}>
-          <img
-            src="/icons/iconBack.svg"
-            alt="뒤로 가기"
-            width="24"
-            height="24"
-            className={styles.icon}
-          />
-        </button>
-      </div>
-
-      {/* 상단 텍스트 */}
-      <h1 className={styles.title}>
-        일기를 쓰면서<br></br>어떤 감정을 느끼셨나요?
-      </h1>
-      <p className={styles.subtitle}>
-        스스로 감정을 인식할 때 자기이해능력이 높아져요!<br></br>
-        감정을 모르겠다면 AI가 분석해드릴게요.
-      </p>
-
-      {/* 감정 카드 */}
-      <div className={styles.emotionContainer}>
-        <button className={styles.arrowButton} onClick={handlePrevEmotion}>
-          <img src="/icons/iconLeft.svg" alt="이전" width="24" height="24" />
-        </button>
-        <div className={styles.emotionCard}>
-          <img src={currentEmotion.image} alt={currentEmotion.name} />
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <button onClick={handleBackClick} className={styles.backButton}>
+            <img
+              src="/icons/iconBack.svg"
+              alt="뒤로 가기"
+              width="24"
+              height="24"
+              className={styles.icon}
+            />
+          </button>
         </div>
-        <button className={styles.arrowButton} onClick={handleNextEmotion}>
-          <img src="/icons/iconRight.svg" alt="다음" width="24" height="24" />
-        </button>
-      </div>
 
-      {/* 감정에 따른 카드 리스트 */}
-      <div className={styles.cardList}>
-        {currentEmotion.cards.map((card) => (
-          <Card
-            key={card.id}
-            id={card.id}
-            title={card.title}
-            imageUrl={card.image}
-            bgColor={card.bgColor}
-            isSelected={selectedCards.includes(card.title)} // 타이틀 기반으로 선택 상태 확인
-            onClick={() => handleCardClick(card.id, card.title)} // ID와 타이틀 전달
-          />
-        ))}
-      </div>
+        {/* 상단 텍스트 */}
+        <h1 className={styles.title}>
+          일기를 쓰면서<br></br>어떤 감정을 느끼셨나요?
+        </h1>
+        <p className={styles.subtitle}>
+          스스로 감정을 인식할 때 자기이해능력이 높아져요!<br></br>
+          감정을 모르겠다면 AI가 분석해드릴게요.
+        </p>
 
-      <span className={styles.selectionCount}>{selectedCards.length}/4</span>
-
-      {/* 선택된 카드 */}
-      <div className={styles.selectedEmotions}>
-        {selectedCards.map((title) => (
-          <div key={title} className={styles.selectedEmotion}>
-            <span>{title}</span>
-            <button
-              className={styles.removeButton}
-              onClick={() => handleRemoveSelection(title)}
-            >
-              ✕
-            </button>
+        {/* 감정 카드 */}
+        <div className={styles.emotionContainer}>
+          <button className={styles.arrowButton} onClick={handlePrevEmotion}>
+            <img src="/icons/iconLeft.svg" alt="이전" width="24" height="24" />
+          </button>
+          <div className={styles.emotionCard}>
+            <img src={currentEmotion.image} alt={currentEmotion.name} />
           </div>
-        ))}
-      </div>
+          <button className={styles.arrowButton} onClick={handleNextEmotion}>
+            <img src="/icons/iconRight.svg" alt="다음" width="24" height="24" />
+          </button>
+        </div>
 
-      {/* 직접 입력 */}
-      <input
-        type="text"
-        placeholder="직접 입력할래요"
-        value={customEmotion}
-        onChange={handleInputChange}
-        onKeyPress={handleInputKeyPress}
-        className={styles.customInput}
-      />
+        {/* 감정에 따른 카드 리스트 */}
+        <div className={styles.cardList}>
+          {currentEmotion.cards.map((card) => (
+            <Card
+              key={card.id}
+              id={card.id}
+              title={card.title}
+              imageUrl={card.image}
+              bgColor={card.bgColor}
+              isSelected={selectedCards.includes(card.title)} // 타이틀 기반으로 선택 상태 확인
+              onClick={() => handleCardClick(card.id, card.title)} // ID와 타이틀 전달
+            />
+          ))}
+        </div>
 
-      {/* 하단 버튼 */}
-      <div className={styles.buttonContainer}>
-        <ButtonEmpty
-          label="건너뛸게요"
-          onClick={handleOpenPopup} // 팝업 열기
+        <span className={styles.selectionCount}>{selectedCards.length}/4</span>
+
+        {/* 선택된 카드 */}
+        <div className={styles.selectedEmotions}>
+          {selectedCards.map((title) => (
+            <div key={title} className={styles.selectedEmotion}>
+              <span>{title}</span>
+              <button
+                className={styles.removeButton}
+                onClick={() => handleRemoveSelection(title)}
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {/* 직접 입력 */}
+        <input
+          type="text"
+          placeholder="직접 입력할래요"
+          value={customEmotion}
+          onChange={handleInputChange}
+          onKeyPress={handleInputKeyPress}
+          className={styles.customInput}
         />
-        <Button
-          label="추가할게요"
-          onClick={handleRegisterClick} // 팝업 열기
-        />
-      </div>
 
-      {/* 팝업 */}
-      {isPopupVisible && (
-        <RecordPopup diaryCount={diaryCount} onClose={handleClosePopup} />
-      )}
+        {/* 하단 버튼 */}
+        <div className={styles.buttonContainer}>
+          <ButtonEmpty
+            label="건너뛸게요"
+            onClick={handleOpenPopup} // 팝업 열기
+          />
+          <Button
+            label="추가할게요"
+            onClick={handleRegisterClick} // 팝업 열기
+          />
+        </div>
+
+        {/* 팝업 */}
+        {isPopupVisible && (
+          <RecordPopup diaryCount={diaryCount} onClose={handleClosePopup} />
+        )}
+      </div>
     </div>
+  );
+}
+
+export default function EmotionSelectionPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchParamsWrapper>
+        {({ addEmotionSeq, diaryDate }) => (
+          <EmotionSelectionContent
+            addEmotionSeq={addEmotionSeq}
+            diaryDate={diaryDate}
+          />
+        )}
+      </SearchParamsWrapper>
+    </Suspense>
   );
 }
