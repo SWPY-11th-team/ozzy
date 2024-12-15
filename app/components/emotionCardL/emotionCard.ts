@@ -5,6 +5,25 @@ export interface EmotionCardData {
     stroke: string; // 테두리 색상
     shadow: string; // 그림자 스타일
   }
+
+  export const emotionToKorean = (emotion: string | undefined) => {
+    switch (emotion) {
+      case "happy":
+        return "기쁜";
+      case "sad":
+        return "슬픈";
+      case "angry":
+        return "화난";
+      case "surprised":
+        return "놀란";
+      case "bad":
+        return "불쾌한";
+      case "fearful":
+        return "두려운";
+      default:
+        return "중립적인";
+    }
+  }
   
   export const emotionCardData: EmotionCardData[] = [
     {
@@ -22,7 +41,7 @@ export interface EmotionCardData {
       shadow: "x 4 / y 4 / blur 8 / color #000000",
     },
     {
-      id: "anger",
+      id: "angry",
       image: "/emotion/emotionAngry.svg",
       fill: ["#833233", "#1D0909"],
       stroke: "#FF5151",

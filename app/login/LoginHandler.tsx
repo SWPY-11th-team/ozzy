@@ -13,12 +13,12 @@ const LoginHandler = (props: any) => {
 
   const handleGoogleLogin = () =>
     router.push(
-      `${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/google?redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}&mode=login`,
+      `http://ozzy-backend.duckdns.org/oauth2/authorization/google?redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}/login&mode=login`,
     );
 
   const handleKakaoLogin = () =>
     router.push(
-      `${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/kakao?redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}&mode=login`,
+      `http://ozzy-backend.duckdns.org/oauth2/authorization/kakao?redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}/login&mode=login`,
     );
 
   useEffect(() => {

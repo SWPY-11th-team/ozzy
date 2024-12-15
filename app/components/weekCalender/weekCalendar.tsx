@@ -26,11 +26,13 @@ const getDayOfWeek = (dayNumber: number) => {
 // 월요일부터 시작하는 이번 주의 날짜 반환
 const getThisWeekDates = () => {
   const curr = new Date();
-  const day = curr.getDay() === 0 ? 7 : curr.getDay(); // 일요일이면 7로 처리
-  const monday = curr.getDate() - day + 1; // 월요일 날짜 계산
+  const day = curr.getDay(); // 일요일은 0, 월요일은 1
+  const mondayOffset = day === 0 ? -6 : 1 - day; // 일요일이면 -6, 아니면 1 - day
+  const monday = curr.getDate() + mondayOffset; // 월요일 날짜 계산
   return Array.from({ length: 7 }, (_, index) => {
     const date = new Date(curr);
     date.setDate(monday + index);
+    date.setHours(0, 0, 0, 0);
     return date;
   });
 };
@@ -74,9 +76,13 @@ const WeekCalendar = ({
   currentDate: string;
 }) => {
   const [selectedDate, setSelectedDate] = useState<string | null>(currentDate);
-  const thisWeekDates = getThisWeekDates().map(
-    (date) => date.toISOString().split('T')[0],
-  ); // 이번 주 날짜 배열 (string 형식)
+  const thisWeekDates = getThisWeekDates().map((date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+  });
 
   const handleDateClick = (date: string) => {
     setSelectedDate(date);

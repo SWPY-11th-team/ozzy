@@ -25,14 +25,15 @@ export const SelectedEmotion = ({
   const [selectedEmotions, setSelectedEmotions] = useState<
     Emotion[] | undefined
   >();
+
   const emotionData = {
     body: {
-      emotions: data.emotions,
+      emotions: data?.emotions,
     },
   };
   useEffect(() => {
     const emotionList =
-      emotionData.body.emotions === null
+      emotionData.body.emotions === undefined
         ? null
         : emotionData.body.emotions.split(',').map((emotionTitle: string) => {
             const matchedEmotion = emotions

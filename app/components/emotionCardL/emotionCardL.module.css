@@ -64,13 +64,21 @@
     right: -20px;
   }
   
+  .description {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 160%;
+    padding: 16px 0px;
+    margin: 0;
+  }
+
   .reply {
     font-size: 14px;
     line-height: 1.6;
-    color: #e0e0e0; /* 연한 회색 */
-    width: 100%;
-    text-align: center;
-    margin-bottom: 30px;
+    color: #FFFFFF; 
+    letter-spacing: -2.5%;
+    padding: 10px 16px;
   }
   
   .cardWrapper {
