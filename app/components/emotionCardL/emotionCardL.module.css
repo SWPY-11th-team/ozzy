@@ -1,0 +1,96 @@
+.wrapper {
+    width: 358px;
+    height: 557px;
+    background-color: #2c2c2c; /* 배경색 */
+    border-radius: 16px;
+    padding: 12px 12px 42px; /* 위 12px, 좌우 12px, 아래 42px */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  }
+  .header {
+    display: flex;
+    justify-content: space-between; /* 좌우 끝에 정렬 */
+    align-items: center;
+    width: 100%; 
+    border-bottom: 2px solid #ffffff; 
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  
+  .percentage {
+    color: #60a5fa; /* 파란색 강조 */
+    font-size: 24px;
+    font-weight: bold;
+    right: 12px;
+    top: 12px;
+  }
+  
+  .cardContainer {
+    width: 326px;
+    height: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .navButton {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+    justify-content: space-between;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+  
+  .navButton.left {
+    left: -20px;
+  }
+  
+  .navButton.right {
+    right: -20px;
+  }
+  
+  .reply {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #e0e0e0; /* 연한 회색 */
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .cardWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+
+  .card {
+    width: 210px;
+    height: 210px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  }
+  
+  .cardImage {
+    width: 326px;
+    height: 210px;
+  }
+  
