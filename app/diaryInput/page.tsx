@@ -8,7 +8,12 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export default function DiaryInput() {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const [searchParams] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return new URLSearchParams(window.location.search);
+    }
+    return new URLSearchParams();
+  });
   const queryDate = searchParams.get('diaryDate');
 
   const [title, setTitle] = useState<string>('');
