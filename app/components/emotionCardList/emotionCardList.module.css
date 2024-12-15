@@ -1,0 +1,77 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: #001B11; /* 원하는 배경색 설정 */
+    border-radius: 16px; /* 둥근 테두리 추가 */
+    padding: 20px; /* 안쪽 여백 */
+    padding-bottom: 40px;
+    margin: 10px; /* 바깥 여백 */
+    justify-content: center;
+  }
+  
+  .container{
+    text-align: center;    
+}
+
+.cardList {
+    display: flex;
+    justify-content: center; /* 가운데 정렬 */
+    align-items: center;
+    padding: 16px; /* 여백 */
+    position: relative; /* 부모 요소 설정 */
+  }
+  
+  .cardItem {
+    flex: 0 0 auto; /* 카드가 늘어나지 않도록 설정 */
+    width: 120px; /* 카드 너비 */
+    height: 150px; /* 카드 높이 */
+    position: relative; /* 상대적 위치 설정 */
+    margin: 0 -30px; /* 카드들을 겹치게 만드는 마이너스 margin */
+    z-index: 1; /* 카드의 층위 설정 */
+  }
+  
+  .cardItem:nth-child(1) {
+    transform: translateX(-15px); /* 첫 번째 카드를 왼쪽으로 이동 */
+  }
+  
+  .cardItem:nth-child(2) {
+    transform: translateX(0); /* 두 번째 카드 정중앙 */
+    z-index: 2; /* 두 번째 카드가 가장 위에 오도록 설정 */
+  }
+  
+  .cardItem:nth-child(3) {
+    transform: translateX(15px); /* 세 번째 카드를 오른쪽으로 이동 */
+    z-index: 3;
+}
+  .title {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .subtitle {
+    color: #cccccc;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .button {
+    background-color: #0fe597; /* 버튼 색상 */
+    color: #121212;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .button:hover {
+    background-color: #05b475;
+  }
+  
+ 

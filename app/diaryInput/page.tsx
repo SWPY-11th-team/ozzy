@@ -70,7 +70,10 @@ export default function DiaryInput() {
     <div className={styles.container}>
       {/* 상단 헤더 */}
       <header className={styles.header}>
-        <img src="/icons/iconLeft.svg" alt="뒤로가기" className={styles.icon} />
+        <img src="/icons/iconLeft.svg"
+             alt="뒤로가기"
+             className={styles.icon}
+             onClick={()=>router.back()} />
         <h1 className={styles.date}>{today.replace(/-/g, ". ")}</h1>
         <img src="/icons/iconCheck.svg" 
             alt="저장" 

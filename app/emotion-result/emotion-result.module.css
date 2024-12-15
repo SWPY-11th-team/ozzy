@@ -36,4 +36,5 @@
     right: 0;
     width: 28px; /* 로고 크기 */
     height: 28px;
+    cursor: pointer;
   }
