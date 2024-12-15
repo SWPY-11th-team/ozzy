@@ -21,10 +21,6 @@ const LoginHandler = (props: any) => {
       `${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/kakao?redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}&mode=login`,
     );
 
-  const navigateToTerms = () => {
-    router.push('/terms');
-  };
-
   useEffect(() => {
     if (
       !process.env.NEXT_PUBLIC_API_URL ||
@@ -37,7 +33,7 @@ const LoginHandler = (props: any) => {
     const tokenFromLocalStorage = localStorage.getItem('accessToken');
 
     if (tokenFromLocalStorage) {
-      console.log('이미 로그인된 사용자, /dashboard로 이동');
+      console.log('이미 로그인된 사용자');
       router.push('/diaryInput');
       return;
     }
@@ -46,8 +42,8 @@ const LoginHandler = (props: any) => {
     const refreshTokenFromURL = searchParams.get('refreshToken');
 
     if (tokenFromURL && refreshTokenFromURL) {
-      localStorage.setItem('accessToken', tokenFromURL);
-      localStorage.setItem('refreshToken', refreshTokenFromURL);
+      localStorage.setItem(`accessToken`, tokenFromURL);
+      localStorage.setItem(`refreshToken`, refreshTokenFromURL);
       setAccessToken(tokenFromURL);
       setRefreshToken(refreshTokenFromURL);
 

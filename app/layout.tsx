@@ -11,20 +11,20 @@ interface Props {
 }
 
 export const metadata: Metadata = {
-  title: "ozzy",
-  description: "당신의 감정을 알려주는 일기 서비스",
-  keywords: ["감정", "일기", "감정일기", "AI일기"],
+  title: 'ozzy',
+  description: '당신의 감정을 알려주는 일기 서비스',
+  keywords: ['감정', '일기', '감정일기', 'AI일기'],
   openGraph: {
-    title: "ozzy",
-    description: "ozzy에 일기를 쓰고 당신의 감정을 알아보세요",
+    title: 'ozzy',
+    description: 'ozzy에 일기를 쓰고 당신의 감정을 알아보세요',
     url: `${process.env.NEXT_PUBLIC_REDIRECT_URI}`,
-    siteName: "ozzy",
+    siteName: 'ozzy',
     images: [
       {
-        url: "/app/icon.ico",
+        url: '/app/icon.ico',
       },
     ],
-    type: "website",
+    type: 'website',
   },
 };
 

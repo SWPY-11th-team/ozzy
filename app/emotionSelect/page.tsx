@@ -1,25 +1,25 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { emotions } from "./emotionData"; // 감정 데이터 가져오기
-import { ButtonEmpty } from "../components/button/buttonEmpty";
-import { Card } from "../components/card/Card";
-import { Button } from "../components/button/Button";
-import { RecordPopup } from "../components/registerPopUp/registerPopUp";
-import styles from "./emotionSelect.module.css"
-import { useSearchParams } from "next/navigation";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import React, { useState } from 'react';
+import { emotions } from './emotionData'; // 감정 데이터 가져오기
+import { ButtonEmpty } from '../components/button/buttonEmpty';
+import { Card } from '../components/card/Card';
+import { Button } from '../components/button/Button';
+import { RecordPopup } from '../components/registerPopUp/registerPopUp';
+import styles from './emotionSelect.module.css';
+import { useSearchParams } from 'next/navigation';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export default function EmotionSelectionPage() {
   const [currentEmotionIndex, setCurrentEmotionIndex] = useState(0); // 현재 감정의 인덱스
   const [selectedCards, setSelectedCards] = useState<string[]>([]); // 카드 타이틀을 저장
-  const [customEmotion, setCustomEmotion] = useState<string>("");
-  const [searchParams,] = useState(() => {
+  const [customEmotion, setCustomEmotion] = useState<string>('');
+  const [searchParams] = useState(() => {
     if (typeof window !== 'undefined') {
-        return new URLSearchParams(window.location.search);
+      return new URLSearchParams(window.location.search);
     }
     return new URLSearchParams();
-});
+  });
 
   // 현재 선택된 감정
   const currentEmotion = emotions[currentEmotionIndex];
@@ -27,15 +27,13 @@ export default function EmotionSelectionPage() {
   // 이전 감정으로 이동
   const handlePrevEmotion = () => {
     setCurrentEmotionIndex(
-      (prevIndex) => (prevIndex - 1 + emotions.length) % emotions.length
+      (prevIndex) => (prevIndex - 1 + emotions.length) % emotions.length,
     );
   };
 
   // 다음 감정으로 이동
   const handleNextEmotion = () => {
-    setCurrentEmotionIndex(
-      (prevIndex) => (prevIndex + 1) % emotions.length
-    );
+    setCurrentEmotionIndex((prevIndex) => (prevIndex + 1) % emotions.length);
   };
 
   const handleBackClick = () => {
@@ -52,7 +50,6 @@ export default function EmotionSelectionPage() {
       return prev; // 최대 4개 초과 시 추가하지 않음
     });
   };
-  
 
   // 선택 해제 (X 버튼 클릭)
   const handleRemoveSelection = (title: string) => {
@@ -65,44 +62,54 @@ export default function EmotionSelectionPage() {
   };
 
   // 엔터 키 입력 처리
-  const handleInputKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter" && customEmotion.trim() && selectedCards.length < 4) {
+  const handleInputKeyPress = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+  ) => {
+    if (
+      event.key === 'Enter' &&
+      customEmotion.trim() &&
+      selectedCards.length < 4
+    ) {
       setSelectedCards((prev) => [...prev, customEmotion.trim()]); // 입력된 값 추가
-      setCustomEmotion(""); // 입력 필드 초기화
+      setCustomEmotion(''); // 입력 필드 초기화
     }
   };
-  
+
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [diaryCount, setDiaryCount] = useState(1); // 일기 입력 개수
 
   const handleOpenPopup = () => setIsPopupVisible(true);
-  const handleClosePopup = () => {setIsPopupVisible(false);};
-
+  const handleClosePopup = () => {
+    setIsPopupVisible(false);
+  };
 
   const token = useLocalStorage();
   const addEmotionSeq = searchParams.get('addEmotionSeq');
   const diaryDate = searchParams.get('diaryDate');
 
   const handleRegisterClick = async () => {
-     await addEmotion();
-     await getDiaryCount();
+    await addEmotion();
+    await getDiaryCount();
 
-     handleOpenPopup();
+    handleOpenPopup();
   };
 
   const addEmotion = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/add-emotion`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `${token}`
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/add-emotion`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `${token}`,
+          },
+          body: JSON.stringify({
+            addEmotionSeq: addEmotionSeq,
+            emotions: selectedCards.join(','),
+          }),
         },
-        body: JSON.stringify({
-          addEmotionSeq: addEmotionSeq,
-          emotions: selectedCards.join(',')
-        }),
-      })
+      );
 
       if (response.status !== 200) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -118,15 +125,23 @@ export default function EmotionSelectionPage() {
 
   const getDiaryCount = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/diary/count?date=${diaryDate}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `${token}`
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/diary/count?date=${diaryDate}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `${token}`,
+          },
         },
-      })
+      );
+      console.log('Request URL:', response.url); // URL 확인
+      console.log('Request Headers:', {
+        'Content-Type': 'application/json',
+        Authorization: `${token}`,
+      });
 
-      if (response.status!== 200) {
+      if (response.status !== 200) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
@@ -154,7 +169,9 @@ export default function EmotionSelectionPage() {
       </div>
 
       {/* 상단 텍스트 */}
-      <h1 className={styles.title}>일기를 쓰면서<br></br>어떤 감정을 느끼셨나요?</h1>
+      <h1 className={styles.title}>
+        일기를 쓰면서<br></br>어떤 감정을 느끼셨나요?
+      </h1>
       <p className={styles.subtitle}>
         스스로 감정을 인식할 때 자기이해능력이 높아져요!<br></br>
         감정을 모르겠다면 AI가 분석해드릴게요.
@@ -163,24 +180,16 @@ export default function EmotionSelectionPage() {
       {/* 감정 카드 */}
       <div className={styles.emotionContainer}>
         <button className={styles.arrowButton} onClick={handlePrevEmotion}>
-          <img src="/icons/iconLeft.svg"
-               alt="이전" 
-               width="24"
-               height="24"
-               />
+          <img src="/icons/iconLeft.svg" alt="이전" width="24" height="24" />
         </button>
         <div className={styles.emotionCard}>
           <img src={currentEmotion.image} alt={currentEmotion.name} />
         </div>
         <button className={styles.arrowButton} onClick={handleNextEmotion}>
-          <img src="/icons/iconRight.svg" 
-               alt="다음" 
-               width="24"
-               height="24"
-               />
+          <img src="/icons/iconRight.svg" alt="다음" width="24" height="24" />
         </button>
       </div>
-      
+
       {/* 감정에 따른 카드 리스트 */}
       <div className={styles.cardList}>
         {currentEmotion.cards.map((card) => (
@@ -192,10 +201,10 @@ export default function EmotionSelectionPage() {
             bgColor={card.bgColor}
             isSelected={selectedCards.includes(card.title)} // 타이틀 기반으로 선택 상태 확인
             onClick={() => handleCardClick(card.id, card.title)} // ID와 타이틀 전달
-          />        
+          />
         ))}
       </div>
-      
+
       <span className={styles.selectionCount}>{selectedCards.length}/4</span>
 
       {/* 선택된 카드 */}
@@ -212,7 +221,7 @@ export default function EmotionSelectionPage() {
           </div>
         ))}
       </div>
-      
+
       {/* 직접 입력 */}
       <input
         type="text"
@@ -223,9 +232,8 @@ export default function EmotionSelectionPage() {
         className={styles.customInput}
       />
 
-
-{/* 하단 버튼 */}
-<div className={styles.buttonContainer}>
+      {/* 하단 버튼 */}
+      <div className={styles.buttonContainer}>
         <ButtonEmpty
           label="건너뛸게요"
           onClick={handleOpenPopup} // 팝업 열기
