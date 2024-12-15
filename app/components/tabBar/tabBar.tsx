@@ -44,6 +44,7 @@ export const TabBar = () => {
     pathname.startsWith('/terms') || // /terms 및 하위 경로 포함
     pathname === '/login' ||
     pathname === '/nickname' ||
+    pathname === '/onBoarding' ||
     pathname === '/';
 
   const router = useRouter();
