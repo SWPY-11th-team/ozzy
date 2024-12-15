@@ -31,17 +31,17 @@ export const SelectedEmotion = ({
       emotions: data?.emotions,
     },
   };
-  useEffect(() => {
-    const emotionList =
-      emotionData.body.emotions === undefined
-        ? null
-        : emotionData.body.emotions.split(',').map((emotionTitle: string) => {
-            const matchedEmotion = emotions
-              .flatMap((emotionGroup) => emotionGroup.cards) // 모든 카드 데이터를 평탄화
-              .find((card) => card.title.trim() === emotionTitle.trim());
 
-            return matchedEmotion || null;
-          });
+  useEffect(() => {
+    const emotionList = !emotionData.body.emotions
+      ? null
+      : emotionData.body.emotions.split(',').map((emotionTitle: string) => {
+          const matchedEmotion = emotions
+            .flatMap((emotionGroup) => emotionGroup.cards) // 모든 카드 데이터를 평탄화
+            .find((card) => card.title.trim() === emotionTitle.trim());
+
+          return matchedEmotion || null;
+        });
 
     // 유효한 감정 카드만 상태에 저장
     setSelectedEmotions(
@@ -65,19 +65,21 @@ export const SelectedEmotion = ({
           />
         </button>
       </div>
-      <div className={styles.cardContainer}>
-        {selectedEmotions?.map((emotion) => (
-          <Card
-            key={emotion.id}
-            id={emotion.id}
-            title={emotion.title}
-            imageUrl={emotion.image}
-            bgColor={emotion.bgColor}
-            isSelected={false}
-            onClick={() => {}}
-          />
-        ))}
-      </div>
+      {emotionData.body.emotions && (
+        <div className={styles.cardContainer}>
+          {selectedEmotions?.map((emotion) => (
+            <Card
+              key={emotion.id}
+              id={emotion.id}
+              title={emotion.title}
+              imageUrl={emotion.image}
+              bgColor={emotion.bgColor}
+              isSelected={false}
+              onClick={() => {}}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

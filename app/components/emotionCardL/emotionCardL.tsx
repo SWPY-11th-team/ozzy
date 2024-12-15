@@ -47,7 +47,7 @@ export const EmotionCardL = ({
     (card) => card.id === emotionName,
   );
 
-  console.log(emotionName);
+  const defaultImage = '/emotion/emotionNeutral.svg';
 
   return (
     <div
@@ -79,7 +79,7 @@ export const EmotionCardL = ({
         </button>
 
         <img
-          src={emotionDetails?.image}
+          src={emotionDetails?.image || defaultImage}
           alt={emotionDetails?.id}
           className={styles.cardImage}
           style={{ width: '254px' }}

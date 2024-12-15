@@ -124,7 +124,7 @@ const EmotionCalendar = () => {
 
   const tileContent = ({ date }: { date: Date }) => {
     // const dateString = date.toISOString().split('T')[0];
-    const dateString = date.toLocaleDateString('en-CA');  // 날짜 형식 수정
+    const dateString = date.toLocaleDateString('en-CA'); // 날짜 형식 수정
 
     const emotionsForDate = emotionData.filter(
       (emo) => emo.date === dateString,
@@ -257,8 +257,6 @@ const EmotionCalendar = () => {
       />
       <h2>이번 달의 감정을 모아봤어요</h2>
       <EmotionDonutChart emotions={bubbleData} />
-
-      <h2>직접 기록한 감정</h2>
     </div>
   );
 };
