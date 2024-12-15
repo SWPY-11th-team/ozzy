@@ -1,47 +1,119 @@
+/* 전체 wrapper 스타일 */
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* 화면 높이 100% */
-    background-color: #000; /* 배경색 설정 */
-    color: white;
-  }
-  
-  .content {
-    text-align: center;
-  }
-  
-  .image {
-    width: 250px; /* 이미지 크기 설정 */
-    margin-bottom: 20px;
-  }
-  
-  .textContainer {
-    margin-bottom: 40px;
-  }
-  
-  .title {
-    font-size: 24px;
-  }
-  
-  .description {
-    font-size: 14px;
-    line-height: 1.6;
-  }
-  
-  .button {
-    background-color: #0fe597; /* 버튼 색상 */
-    color: #121212;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .button:hover {
-    background-color: #05b475;
-  }
-  
+  background-color: #5d5d5d;
+  position: relative;
+  height: 844px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* 콘텐츠 컨테이너 */
+.content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.image {
+  border: 2px #121212;
+  width: 100%;
+  max-width: 226px;
+  margin-top: -50px;
+}
+
+.textContainer {
+  text-align: center;
+  padding: 0 16px;
+}
+
+.title {
+  font-size: 16px;
+  color: #0c6f4c;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.description {
+  font-size: 24px;
+  color: #121212;
+  line-height: 1.6;
+  white-space: pre-line;
+  margin-bottom: 30px;
+}
+
+.container{
+  background-color: #ffffff;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+}
+
+.button {
+  background-color: #0FE597; 
+  color: black; 
+  border: none; 
+  padding: 12px 24px; 
+  border-radius: 24px; 
+  font-family: 'Noto Sans KR Bold', sans-serif;
+  width: 358px;
+  height: 56px;
+  font-size: 14px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: #05B475; 
+  transform: scale(1.02); 
+}
+
+.button:click{
+  background-color: #0C6F4C;
+}
+
+.button:active {
+  background-color: #0FE597;
+  transform: scale(0.98); 
+}
+
+.progressBarContainer {
+  display: flex;
+  justify-content: space-between; 
+  width: calc(100% - 40px); 
+  margin: 0 auto;
+  position: absolute;
+  top: 30px; 
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: transparent; 
+}
+
+
+.progressBarSegment {
+  width: 33%; /* 진행 바 세그먼트 너비 */
+  height: 100%;
+  background-color: #e0e0e0; /* 기본 회색 */
+  transition: background-color 0.3s ease;
+  border-radius: 2px; /* 모서리를 둥글게 */
+  margin: 0 2px;
+}
+
+
+.activeSegment {
+  background-color: #0FE597; 
+}

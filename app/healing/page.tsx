@@ -5,13 +5,13 @@ import { useRouter } from "next/navigation";
 import styles from "./healing.module.css";
 
 const emotions = [
-    { id: "joy", image: "/emotionCard/emotionJoy.svg" },
-    { id: "sad", image: "/emotionCard/emotionSad.svg" },
-    { id: "anger", image: "/emotionCard/emotionAnger.svg" },
-    { id: "bad", image: "/emotionCard/emotionBad.svg" },
-    { id: "fearful", image: "/emotionCard/emotionFearful.svg" },
-    { id: "surprised", image: "/emotionCard/emotionSurprised.svg" },
-    { id: "neutral", image: "/emotionCard/emotionNeutral.svg" },
+    { id: "joy", image: "/emotionOne/emotionJoyOne.svg" },
+    { id: "sad", image: "/emotionOne/emotionSadOne.svg" },
+    { id: "anger", image: "/emotionOne/emotionAngerOne.svg" },
+    { id: "bad", image: "/emotionOne/emotionBadOne.svg" },
+    { id: "fearful", image: "/emotionOne/emotionFearfulOne.svg" },
+    { id: "surprised", image: "/emotionOne/emotionSurpriseOne.svg" },
+    { id: "neutral", image: "/emotionOne/emotionNeutralOne.svg" },
 ];
 
 const HealingPage = () => {
