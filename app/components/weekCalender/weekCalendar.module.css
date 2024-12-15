@@ -10,20 +10,21 @@
   border-radius: 4rem;
   border: 1px solid #0FE597;
   padding: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-left: -0.25rem;
+  margin-right: -0.25rem;
 }
+
 .day {
     margin: 0 0 8px;
     margin-bottom: 3rem;
-    font-size: 1.25rem;
+    font-size: 1rem;
     text-align: center;
 }
 
 .date {
     margin: 0 0 8px;
-    font-size: 1.25rem;
+    font-size: 1rem;
     text-align: center;
 }
