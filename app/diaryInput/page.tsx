@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Popup } from '../components/popUp/popUp';
 import styles from './diaryInput.module.css';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -8,11 +8,19 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 import { fetchDiary } from '../api/integratedDiary';
 import { fetchSingleDiary } from '../api/fetchSingleDiary';
 
-export default function DiaryInput() {
-  const router = useRouter();
+function SearchParamsWrapper({
+  children,
+}: {
+  children: (params: { queryDate: string | null }) => React.ReactNode;
+}) {
   const searchParams = useSearchParams();
   const queryDate = searchParams.get('diaryDate');
 
+  return children({ queryDate });
+}
+
+function DiaryInputContent({ queryDate }: { queryDate: any }) {
+  const router = useRouter();
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [isPopupVisible, setPopupVisible] = useState(false); // 팝업 상태 관리
@@ -23,10 +31,10 @@ export default function DiaryInput() {
   const utc = now.getTime() + now.getTimezoneOffset() * 60 * 1000;
   const koreaTimeDiff = 9 * 60 * 60 * 1000;
   const koreaTime = new Date(utc + koreaTimeDiff);
-
-  const date =
+  const [date, setDate] = useState<any>(
     queryDate ||
-    `${koreaTime.getFullYear()}-${String(koreaTime.getMonth() + 1).padStart(2, '0')}-${String(koreaTime.getDate()).padStart(2, '0')}`;
+      `${koreaTime.getFullYear()}-${String(koreaTime.getMonth() + 1).padStart(2, '0')}-${String(koreaTime.getDate()).padStart(2, '0')}`,
+  );
 
   const handleSaveClick = () => {
     setPopupVisible(true); // 팝업 표시
@@ -101,61 +109,73 @@ export default function DiaryInput() {
   }, [date, token]);
 
   return (
-    <div className={styles.container}>
-      {/* 상단 헤더 */}
-      <header className={styles.header}>
-        <img
-          src="/icons/iconLeft.svg"
-          alt="뒤로가기"
-          className={styles.icon}
-          onClick={() => router.back()}
-        />
-        <h1 className={styles.date}>{date.replace(/-/g, '. ')}</h1>
-        <img
-          src="/icons/iconCheck.svg"
-          alt="저장"
-          className={styles.icon}
-          onClick={handleSaveClick}
-        />
-      </header>
+    <Suspense fallback={<div>loading...</div>}>
+      <div className={styles.container}>
+        {/* 상단 헤더 */}
+        <header className={styles.header}>
+          <img
+            src="/icons/iconLeft.svg"
+            alt="뒤로가기"
+            className={styles.icon}
+            onClick={() => router.back()}
+          />
+          <h1 className={styles.date}>{date.replace(/-/g, '. ')}</h1>
+          <img
+            src="/icons/iconCheck.svg"
+            alt="저장"
+            className={styles.icon}
+            onClick={handleSaveClick}
+          />
+        </header>
 
-      {/* 재사용 가능한 팝업 */}
-      <Popup
-        isVisible={isPopupVisible}
-        message="일기를 저장할까요?"
-        confirmLabel="네!"
-        cancelLabel="수정할래요"
-        onConfirm={handleConfirm}
-        onCancel={handleCancel}
-      />
-
-      {/* 제목 입력 */}
-      <div className={styles.inputContainer}>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className={styles.titleInput}
-          placeholder="제목"
-          spellCheck="false"
+        {/* 재사용 가능한 팝업 */}
+        <Popup
+          isVisible={isPopupVisible}
+          message="일기를 저장할까요?"
+          confirmLabel="네!"
+          cancelLabel="수정할래요"
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
         />
-      </div>
 
-      {/* 본문 입력 */}
-      <div className={styles.contentContainer}>
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          maxLength={maxContentLength}
-          className={styles.contentInput}
-          placeholder="오늘 하루는 어떠셨나요?"
-          spellCheck="false"
-        />
-        <div className={styles.charCount}>
-          {`${content.length}/${maxContentLength}`}
+        {/* 제목 입력 */}
+        <div className={styles.inputContainer}>
+          <input
+            type="text"
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className={styles.titleInput}
+            placeholder="제목"
+            spellCheck="false"
+          />
+        </div>
+
+        {/* 본문 입력 */}
+        <div className={styles.contentContainer}>
+          <textarea
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            maxLength={maxContentLength}
+            className={styles.contentInput}
+            placeholder="오늘 하루는 어떠셨나요?"
+            spellCheck="false"
+          />
+          <div className={styles.charCount}>
+            {`${content.length}/${maxContentLength}`}
+          </div>
         </div>
       </div>
-    </div>
+    </Suspense>
+  );
+}
+
+export default function DiaryInput() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchParamsWrapper>
+        {({ queryDate }) => <DiaryInputContent queryDate={queryDate} />}
+      </SearchParamsWrapper>
+    </Suspense>
   );
 }

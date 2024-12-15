@@ -11,46 +11,18 @@ interface EmotionPercentage {
   [key: string]: number; // 감정 이름과 퍼센트
 }
 
-interface EmotionData {
+export interface EmotionData {
   reply: string;
   emotionPercentages: EmotionPercentage[];
 }
 
-export const EmotionCardList = () => {
-  const [emotionData, setEmotionData] = useState<EmotionData | null>(null);
-  const token = useLocalStorage(); // 로컬 스토리지에서 토큰 가져오기
-  const searchParams = useSearchParams();
-  const emotionCardId = searchParams.get('emotionCardId'); // Query param으로 emotionCardId 받기
-
-  useEffect(() => {
-    const fetchEmotionData = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/emotion-card/get?emotionCardId=${emotionCardId}`,
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `${token}`,
-            },
-          },
-        );
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch emotion data');
-        }
-
-        const result = await response.json();
-        setEmotionData(result.body); // API에서 받은 body 저장
-      } catch (error) {
-        console.error('Error fetching emotion data:', error);
-      }
-    };
-
-    if (token && emotionCardId) {
-      fetchEmotionData();
-    }
-  }, [token, emotionCardId]);
+export const EmotionCardList = ({
+  data,
+}: {
+  data: EmotionData | undefined;
+}) => {
+  const [emotionData, setEmotionData] = useState<EmotionData | undefined>(data);
+  console.log('data', data);
 
   const topThreeEmotions = () => {
     if (!emotionData) return [];
@@ -89,12 +61,6 @@ export const EmotionCardList = () => {
             );
           })}
         </div>
-        <button
-          className={styles.button}
-          onClick={() => console.log('Card received!')}
-        >
-          감정분석 카드 받기
-        </button>
       </div>
     </div>
   );
