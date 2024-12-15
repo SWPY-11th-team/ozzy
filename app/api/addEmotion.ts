@@ -1,7 +1,7 @@
 export const fetchAddEmotion = async (addEmotionId: string, token: string | null) => {
   try {
     const response = await fetch(
-      `/api/add-emotion?addEmotionId=${addEmotionId}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/add-emotion?addEmotionId=${addEmotionId}`,
       {
         method: 'GET',
         headers: {

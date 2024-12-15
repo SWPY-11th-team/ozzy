@@ -1,7 +1,7 @@
 export const weeklyDiary = async (date: string, token: string | null) => {
   try {
     const response = await fetch(
-      `/api/diary/count?date=${date}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/diary/count?date=${date}`,
       {
         method: 'GET',
         headers: {

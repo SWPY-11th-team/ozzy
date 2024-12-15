@@ -1,7 +1,7 @@
 export const fetchEmotionCard = async (emotionCardId: string, token: string | null) => {
   try {
     const response = await fetch(
-      `/api/emotion-card?emotionCardId=${emotionCardId}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/emotion-card?emotionCardId=${emotionCardId}`,
       {
         method: 'GET',
         headers: {

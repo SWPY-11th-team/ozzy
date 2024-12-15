@@ -4,7 +4,7 @@ import { fetchEmotionCard } from './emotionCard';
 export const fetchDiary = async (diaryDate: string, token: string | null, setAddEmotionData: Function, setEmotionCardData: Function) => {
   try {
     const response = await fetch(
-      `/api/diary?diaryDate=${diaryDate}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/diary?diaryDate=${diaryDate}`,
       {
         method: 'GET',
         headers: {
