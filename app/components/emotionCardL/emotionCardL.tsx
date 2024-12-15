@@ -95,7 +95,7 @@ export const EmotionCardL = ({
         </button>
       </div>
       <p className={styles.description}>
-        석민님은 오늘 {emotionToKorean(emotionDetails?.id)} 감정을 느꼈네요.
+        오늘 {emotionToKorean(emotionDetails?.id)} 감정을 느꼈네요.
       </p>
       <div className={styles.reply}>
         {emotionData?.reply || 'No response available'}
