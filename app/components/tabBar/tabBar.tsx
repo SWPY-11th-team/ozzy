@@ -23,7 +23,7 @@ const tabs: Tab[] = [
   },
   {
     id: 2,
-    label: '활동',
+    label: '힐링',
     iconActive: '/icons/iconHealing.svg',
     iconInactive: '/icons/iconHealingInactive.svg',
     path: '/healing',
