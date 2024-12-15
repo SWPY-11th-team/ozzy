@@ -14,11 +14,7 @@ function EmotionResult() {
   const currentMonth = currentDate.getMonth() + 1;
   const router = useRouter();
 
-  return (
-    <div className={styles.container}>
-      <DiaryView />
-    </div>
-  );
+  return <div className={styles.container}></div>;
 }
 
 export default EmotionResult;

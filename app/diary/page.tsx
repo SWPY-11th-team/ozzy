@@ -20,6 +20,8 @@ import {
 import { Button } from '../components/button/Button';
 import styled from 'styled-components';
 import { fetchSingleDiary } from '../api/fetchSingleDiary';
+import { DiaryView } from '../components/diaryView/diaryView';
+import { EmotionCardL } from '../components/emotionCardL/emotionCardL';
 
 export default function Diary() {
   const now = new Date();
@@ -48,11 +50,9 @@ export default function Diary() {
     const fetchWeeklyDiaryData = async () => {
       if (token) {
         try {
-          console.log(currentDate);
           const response = await weeklyDiary(currentDate, token);
           const dates = response.body.dates;
           const currentDateObj = new Date(currentDate);
-          console.log('Current Date:', currentDateObj);
 
           const sundayDate = new Date(currentDateObj);
           sundayDate.setDate(
@@ -150,11 +150,12 @@ export default function Diary() {
 
       {/* <EmotionCardList /> */}
 
-      {showDiaryData && <div>{diaryData.title}</div>}
+      {showDiaryData && <DiaryView data={diaryData} />}
 
       {showEmotionCard && (
         <div style={{ color: 'white', width: '100%', height: '100%' }}>
-          <EmotionCardList data={emotionCardData} />
+          {/* <EmotionCardList data={emotionCardData} /> */}
+          <EmotionCardL emotionData={emotionCardData} />
           <SelectedEmotion
             data={addEmotionData}
             addEmotionRouter={() =>

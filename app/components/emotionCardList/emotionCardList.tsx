@@ -22,7 +22,6 @@ export const EmotionCardList = ({
   data: EmotionData | undefined;
 }) => {
   const [emotionData, setEmotionData] = useState<EmotionData | undefined>(data);
-  console.log('data', data);
 
   const topThreeEmotions = () => {
     if (!emotionData) return [];

@@ -1,10 +1,12 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import styles from "./onboarding.module.css";
-import { useRouter } from "next/navigation";
 
-const Onboarding = () => {
+import React, { useState } from 'react';
+import styles from './onBoarding.module.css';
+import { useRouter } from 'next/navigation';
+import { Button } from '../components/button/Button';
+
+const OnBoarding = () => {
   const [pageIndex, setPageIndex] = useState(0);
   const router = useRouter();
 
@@ -72,4 +74,4 @@ const Onboarding = () => {
   );
 };
 
-export default Onboarding;
+export default OnBoarding;

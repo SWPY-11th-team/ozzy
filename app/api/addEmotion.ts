@@ -17,7 +17,5 @@ export const fetchAddEmotion = async (addEmotionId: string, token: string | null
 
     return await response.json();
   } catch (error) {
-    // console.error('Error fetching add emotion data:');
-    // throw error;
   }
 };

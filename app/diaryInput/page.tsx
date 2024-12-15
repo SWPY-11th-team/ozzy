@@ -91,9 +91,7 @@ function DiaryInputContent({ queryDate }: { queryDate: any }) {
     const fetchDiary = async () => {
       try {
         const result = await fetchSingleDiary(date, token);
-        console.log(result);
         if (result !== null) {
-          console.log(result);
           setTitle(result.body.title);
           setContent(result.body.content);
           setIsUpdate(true);
