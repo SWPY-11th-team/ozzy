@@ -6,6 +6,12 @@
   publish = ".next"
 
 [[redirects]]
+  from = "/api/*"
+  to = "http://www.ozzy-backend.duckdns.org/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

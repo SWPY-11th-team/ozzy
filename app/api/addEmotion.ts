@@ -1,8 +1,14 @@
 export const fetchAddEmotion = async (addEmotionId: string, token: string | null) => {
+  const host = window.location.hostname === "localhost" 
+  ? 'http://www.ozzy-backend.duckdns.org'
+  : "api";
+
+
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/add-emotion?addEmotionId=${addEmotionId}`,
+      `${host}/api/add-emotion?addEmotionId=${addEmotionId}`,
       {
+        
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
