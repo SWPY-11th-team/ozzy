@@ -1,11 +1,14 @@
 'use client';
 
 import React from "react";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 import styles from "./AccountPage.module.css";
 
 const AccountPage = () => {
     const router = useRouter(); // useRouter를 컴포넌트 내부에서 올바르게 호출
+
+    // 현재 로그인 옵션 (백엔드 또는 로컬 스토리지에서 불러오는 데이터)
+    const currentLoginOption = "카카오"; // 예시로 '카카오'를 사용
 
     return (
         <div className={styles.container}>
@@ -19,7 +22,10 @@ const AccountPage = () => {
                     <span className={styles.arrow}>›</span>
                 </div>
                 <div className={styles.menuItem}>
-                    <p>로그인 옵션</p>
+                    <div>
+                        <p>로그인 옵션</p>
+                        <p className={styles.subText}>{`현재 ${currentLoginOption}로 로그인하고 있어요`}</p>
+                    </div>
                     <span className={styles.arrow}>›</span>
                 </div>
                 <div className={styles.menuItem}>

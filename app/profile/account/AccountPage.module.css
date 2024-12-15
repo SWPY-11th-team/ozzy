@@ -32,9 +32,20 @@
 .menuItem {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; /* 상단 정렬 */
     padding: 10px 0;
     border-bottom: 1px solid #333;
+}
+
+.menuItem > div {
+    display: flex;
+    flex-direction: column; /* 텍스트를 세로로 정렬 */
+}
+
+.subText {
+    font-size: 14px; /* 작은 텍스트 크기 */
+    color: #aaa; /* 부가 텍스트 색상 */
+    margin-top: 5px; /* "로그인 옵션"과 간격 */
 }
 
 .arrow {
