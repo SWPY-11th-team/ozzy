@@ -18,22 +18,6 @@ function EmotionResult() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.headerText}>
-          <div className={styles.year}>{`${currentYear}년`}</div>
-          <div className={styles.month}>{`${currentMonth}월`}</div>
-        </div>
-        <img
-          src="/icons/iconMypage.svg" // 로고 이미지 경로
-          alt="마이페이지"
-          className={styles.logo}
-          onClick={() => {
-            router.push('/profile');
-          }}
-        />
-      </div>
-
-      {/* <WeekCalendar journalData={sampleJournalData} /> */}
       <EmotionCardList />
     </div>
   );

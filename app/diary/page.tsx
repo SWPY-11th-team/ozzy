@@ -8,6 +8,7 @@ import 'react-calendar/dist/Calendar.css';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { fetchDiary } from '../api/diary';
 import { useRouter } from 'next/navigation';
+import { EmotionCardList } from '../components/emotionCardList/emotionCardList';
 
 const sampleJournalData = [0, 1, 0, 0, 0, 0, 0];
 
@@ -78,6 +79,9 @@ export default function Diary() {
           src="/icons/iconMypage.svg" // 로고 이미지 경로
           alt="마이페이지"
           className={styles.logo}
+          onClick={() => {
+            router.push('/profile');
+          }}
         />
       </div>
       <WeekCalendar
@@ -86,8 +90,10 @@ export default function Diary() {
         currentDate={currentDate}
       />
 
+      <EmotionCardList />
+
       {showEmotionCard && (
-        <div>
+        <div style={{ color: 'white' }}>
           <pre>Add Emotion Data: {JSON.stringify(addEmotionData, null, 2)}</pre>
           <pre>
             Emotion Card Data: {JSON.stringify(emotionCardData, null, 2)}
