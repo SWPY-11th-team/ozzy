@@ -8,6 +8,7 @@ import styles from './emotion-result.module.css';
 import { useRouter } from 'next/navigation';
 import { EmotionCardList } from '../components/emotionCardList/emotionCardList';
 import { EmotionCardS } from '../components/emotionCardS/emotionCardS';
+import { SelectedEmotion } from '../components/selectedEmotion/selectedEmotion';
 
 const sampleJournalData = [0, 1, 0, 0, 0, 0, 0];
 function EmotionResult() {
@@ -18,6 +19,7 @@ function EmotionResult() {
 
   return (
     <div className={styles.container}>
+
       <div className={styles.header}>
         <div className={styles.headerText}>
           <div className={styles.year}>{`${currentYear}년`}</div>
@@ -35,6 +37,9 @@ function EmotionResult() {
 
       {/* <WeekCalendar journalData={sampleJournalData} /> */}
       <EmotionCardList />
+
+      <SelectedEmotion />
+
     </div>
   );
 }
