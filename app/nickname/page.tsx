@@ -12,20 +12,19 @@ const NicknamePage = () => {
   const router = useRouter();
 
   const updateNickName = async (nickname: string) => {
-    const host =
-      window.location.hostname === 'localhost'
-        ? 'http://www.ozzy-backend.duckdns.org'
-        : 'api';
-    const response = await fetch(`${host}/api/user/update`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `${token}`,
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/user/update`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `${token}`,
+        },
+        body: JSON.stringify({
+          nickName: nickname,
+        }),
       },
-      body: JSON.stringify({
-        nickName: nickname,
-      }),
-    });
+    );
 
     if (response.ok) {
       const data = await response.json();
