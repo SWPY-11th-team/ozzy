@@ -10,6 +10,8 @@
     align-items: center;
     color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    margin-top: 20px;
+    margin-bottom: 67px;
   }
   .header {
     display: flex;

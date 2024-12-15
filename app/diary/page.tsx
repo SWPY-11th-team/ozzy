@@ -21,6 +21,7 @@ import { Button } from '../components/button/Button';
 import styled from 'styled-components';
 import { fetchSingleDiary } from '../api/fetchSingleDiary';
 import { DiaryView } from '../components/diaryView/diaryView';
+import { EmotionCardL } from '../components/emotionCardL/emotionCardL';
 
 export default function Diary() {
   const now = new Date();
@@ -153,7 +154,8 @@ export default function Diary() {
 
       {showEmotionCard && (
         <div style={{ color: 'white', width: '100%', height: '100%' }}>
-          <EmotionCardList data={emotionCardData} />
+          {/* <EmotionCardList data={emotionCardData} /> */}
+          <EmotionCardL emotionData={emotionCardData} />
           <SelectedEmotion
             data={addEmotionData}
             addEmotionRouter={() =>
