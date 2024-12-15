@@ -20,6 +20,7 @@ import {
 import { Button } from '../components/button/Button';
 import styled from 'styled-components';
 import { fetchSingleDiary } from '../api/fetchSingleDiary';
+import { DiaryView } from '../components/diaryView/diaryView';
 
 export default function Diary() {
   const now = new Date();
@@ -150,7 +151,7 @@ export default function Diary() {
 
       {/* <EmotionCardList /> */}
 
-      {showDiaryData && <div>{diaryData.title}</div>}
+      {showDiaryData && <DiaryView data={diaryData} />}
 
       {showEmotionCard && (
         <div style={{ color: 'white', width: '100%', height: '100%' }}>
