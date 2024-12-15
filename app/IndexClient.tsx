@@ -7,7 +7,7 @@ import { Card } from './components/card/Card';
 import { Button } from './components/button/Button';
 import { ButtonEmpty } from './components/button/buttonEmpty';
 import { CircleButton } from './components/button/circleButton';
-import { WeekCalender } from './components/weekCalender/weekCalender';
+import { WeekCalender } from './components/weekCalender/weekCalendar';
 import LoginPage from './login/page';
 
 export default function IndexClient() {

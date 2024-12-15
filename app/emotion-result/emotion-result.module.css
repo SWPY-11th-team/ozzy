@@ -1,0 +1,39 @@
+.container {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background-color: #121212;
+    padding: 16px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.headerText {
+    display: flex;
+    flex-direction: column;
+}
+
+.year {
+    color: white;
+    margin-top: 1rem;
+    opacity: 60%;
+  
+}
+.month {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 24px;
+}
+
+.logo {
+    position: absolute;
+    top: 24px;
+    right: 0;
+    width: 28px; /* 로고 크기 */
+    height: 28px;
+  }
