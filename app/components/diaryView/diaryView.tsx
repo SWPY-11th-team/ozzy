@@ -10,10 +10,7 @@ export const DiaryView = ({ data }: { data: any }) => {
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <h1 className={styles.title}>{data.title || '제목 없음'}</h1>
-        <button
-          className={styles.deleteButton}
-          onClick={() => console.log('삭제 기능 구현')}
-        >
+        <button className={styles.deleteButton}>
           <img src="/icons/iconErase.svg" alt="삭제" width="24" height="24" />
         </button>
       </div>

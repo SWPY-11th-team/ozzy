@@ -25,19 +25,16 @@ export const SelectedEmotion = ({
   const [selectedEmotions, setSelectedEmotions] = useState<
     Emotion[] | undefined
   >();
-  console.log('addemotion: ', data);
-  const router = useRouter();
-
-  const testData = {
+  const emotionData = {
     body: {
       emotions: data.emotions,
     },
   };
   useEffect(() => {
     const emotionList =
-      testData.body.emotions === null
+      emotionData.body.emotions === null
         ? null
-        : testData.body.emotions.split(',').map((emotionTitle: string) => {
+        : emotionData.body.emotions.split(',').map((emotionTitle: string) => {
             const matchedEmotion = emotions
               .flatMap((emotionGroup) => emotionGroup.cards) // 모든 카드 데이터를 평탄화
               .find((card) => card.title.trim() === emotionTitle.trim());

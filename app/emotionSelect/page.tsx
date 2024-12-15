@@ -53,7 +53,7 @@ function EmotionSelectionContent({
   };
 
   const handleBackClick = () => {
-    console.log(`뒤로가기`);
+    router.back();
   };
 
   const handleCardClick = (id: number, title: string) => {

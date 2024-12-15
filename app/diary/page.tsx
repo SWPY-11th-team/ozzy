@@ -49,11 +49,9 @@ export default function Diary() {
     const fetchWeeklyDiaryData = async () => {
       if (token) {
         try {
-          console.log(currentDate);
           const response = await weeklyDiary(currentDate, token);
           const dates = response.body.dates;
           const currentDateObj = new Date(currentDate);
-          console.log('Current Date:', currentDateObj);
 
           const sundayDate = new Date(currentDateObj);
           sundayDate.setDate(
