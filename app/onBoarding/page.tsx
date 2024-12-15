@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import styles from './onboarding.module.css';
+import styles from '@/app/onBoarding/onboarding.module.css';
 import { useRouter } from 'next/navigation';
 import { Button } from '../components/button/Button';
 
-const Onboarding = () => {
+const OnBoarding = () => {
   // 현재 페이지 인덱스 상태 관리
   const [pageIndex, setPageIndex] = useState(0);
   const router = useRouter();
@@ -61,4 +61,4 @@ const Onboarding = () => {
   );
 };
 
-export default Onboarding;
+export default OnBoarding;
