@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import styles from '@/app/onBoarding/onboarding.module.css';
+import styles from './onBoarding.module.css';
 import { useRouter } from 'next/navigation';
 import { Button } from '../components/button/Button';
 
