@@ -1,30 +1,29 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Popup } from '../components/popUp/popUp';
 import styles from './diaryInput.module.css';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { fetchDiary } from '../api/integratedDiary';
+import { fetchSingleDiary } from '../api/fetchSingleDiary';
 
 export default function DiaryInput() {
   const router = useRouter();
-  const [searchParams] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return new URLSearchParams(window.location.search);
-    }
-    return new URLSearchParams();
-  });
+  const searchParams = useSearchParams();
   const queryDate = searchParams.get('diaryDate');
 
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [isPopupVisible, setPopupVisible] = useState(false); // 팝업 상태 관리
+  const [isUpdate, setIsUpdate] = useState(false);
   const maxContentLength = 4000;
 
   const now = new Date();
   const utc = now.getTime() + now.getTimezoneOffset() * 60 * 1000;
   const koreaTimeDiff = 9 * 60 * 60 * 1000;
   const koreaTime = new Date(utc + koreaTimeDiff);
+
   const date =
     queryDate ||
     `${koreaTime.getFullYear()}-${String(koreaTime.getMonth() + 1).padStart(2, '0')}-${String(koreaTime.getDate()).padStart(2, '0')}`;
@@ -55,7 +54,7 @@ export default function DiaryInput() {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/diary`,
         {
-          method: 'POST',
+          method: isUpdate ? 'PUT' : 'POST',
           headers: {
             'Content-Type': 'application/json',
             Authorization: `${token}`,
@@ -68,7 +67,7 @@ export default function DiaryInput() {
         },
       );
 
-      if (response.status !== 201) {
+      if (response.status !== 201 && response.status !== 200) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
@@ -79,6 +78,27 @@ export default function DiaryInput() {
       throw error;
     }
   };
+
+  useEffect(() => {
+    const fetchDiary = async () => {
+      try {
+        const result = await fetchSingleDiary(date, token);
+        console.log(result);
+        if (result !== null) {
+          console.log(result);
+          setTitle(result.body.title);
+          setContent(result.body.content);
+          setIsUpdate(true);
+        }
+      } catch (error) {
+        console.error('Error fetching diary:', error);
+      }
+    };
+
+    if (token) {
+      fetchDiary();
+    }
+  }, [date, token]);
 
   return (
     <div className={styles.container}>
