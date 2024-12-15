@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import styles from "./onboarding.module.css";
-import { useRouter } from "next/navigation";
-import { Button } from "../components/button/Button";
+import React, { useState } from 'react';
+import styles from './onboarding.module.css';
+import { useRouter } from 'next/navigation';
+import { Button } from '../components/button/Button';
 
 const Onboarding = () => {
   // 현재 페이지 인덱스 상태 관리
@@ -13,21 +13,22 @@ const Onboarding = () => {
   const pages = [
     {
       id: 0,
-      title: "당신의 감정을 알고싶어요",
-      description: "일기를 쓰고, AI가 분석한 감정 카드를 받아 감정을 알아갑니다.",
-      image: "/icons/iconLeft.svg", // 각 이미지 경로
+      title: '당신의 감정을 알고싶어요',
+      description:
+        '일기를 쓰고, AI가 분석한 감정 카드를 받아 감정을 알아갑니다.',
+      image: '/icons/iconLeft.svg', // 각 이미지 경로
     },
     {
       id: 1,
-      title: "감정을 주제로 일기 쓰기",
-      description: "감정을 모으면 나만의 감정 서재를 발견할 수 있습니다.",
-      image: "/icons/iconLeft.svg",
+      title: '감정을 주제로 일기 쓰기',
+      description: '감정을 모으면 나만의 감정 서재를 발견할 수 있습니다.',
+      image: '/icons/iconLeft.svg',
     },
     {
       id: 2,
-      title: "감정을 통해 성장해보세요",
-      description: "감정을 돌아보고 살피며, 진정한 나를 발견할 수 있습니다.",
-      image: "/icons/iconLeft.svg",
+      title: '감정을 통해 성장해보세요',
+      description: '감정을 돌아보고 살피며, 진정한 나를 발견할 수 있습니다.',
+      image: '/icons/iconLeft.svg',
     },
   ];
 
@@ -43,14 +44,18 @@ const Onboarding = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
-        <img src={pages[pageIndex].image} alt={`Onboarding ${pageIndex + 1}`} className={styles.image} />
+        <img
+          src={pages[pageIndex].image}
+          alt={`Onboarding ${pageIndex + 1}`}
+          className={styles.image}
+        />
         <div className={styles.textContainer}>
           <h2 className={styles.title}>{pages[pageIndex].title}</h2>
           <p className={styles.description}>{pages[pageIndex].description}</p>
         </div>
       </div>
       <button className={styles.button} onClick={handleNext}>
-        {pageIndex === pages.length - 1 ? "시작하기" : "다음"}
+        {pageIndex === pages.length - 1 ? '시작하기' : '다음'}
       </button>
     </div>
   );

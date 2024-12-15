@@ -49,7 +49,6 @@ const TermsPage = () => {
       '/terms/detail4',
       '/terms/detail5',
     ];
-    console.log(detailPages[index - 1]);
     router.push(detailPages[index - 1]);
   };
 
