@@ -1,0 +1,49 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px; /* 제목과 카드 컨테이너 사이의 간격 */
+}
+
+.cardContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 84px); 
+    gap: 24px 8px;
+    justify-content: center;
+  }
+
+.card {
+  width: 84px; /* 카드 너비 */
+  height: 99px; /* 카드 높이 */
+  background-color: var(--bgColor, #ffffff); /* 배경색, 기본값 흰색 */
+  border-radius: 8px; /* 카드의 모서리를 둥글게 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+.card img {
+  max-width: 100%; /* 이미지가 카드 크기를 넘지 않도록 설정 */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* 좌우 끝으로 배치 */
+  align-items: center; /* 수직 가운데 정렬 */
+  width: 100%;
+}
+
+.title{
+  color:#ffffff;
+}
+
+.plusButton {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+}
