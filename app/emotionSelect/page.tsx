@@ -7,19 +7,15 @@ import { Card } from '../components/card/Card';
 import { Button } from '../components/button/Button';
 import { RecordPopup } from '../components/registerPopUp/registerPopUp';
 import styles from './emotionSelect.module.css';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export default function EmotionSelectionPage() {
+  const router = useRouter();
   const [currentEmotionIndex, setCurrentEmotionIndex] = useState(0); // 현재 감정의 인덱스
   const [selectedCards, setSelectedCards] = useState<string[]>([]); // 카드 타이틀을 저장
   const [customEmotion, setCustomEmotion] = useState<string>('');
-  const [searchParams] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return new URLSearchParams(window.location.search);
-    }
-    return new URLSearchParams();
-  });
+  const searchParams = useSearchParams();
 
   // 현재 선택된 감정
   const currentEmotion = emotions[currentEmotionIndex];
@@ -81,6 +77,7 @@ export default function EmotionSelectionPage() {
   const handleOpenPopup = () => setIsPopupVisible(true);
   const handleClosePopup = () => {
     setIsPopupVisible(false);
+    router.push(`/diary`);
   };
 
   const token = useLocalStorage();
