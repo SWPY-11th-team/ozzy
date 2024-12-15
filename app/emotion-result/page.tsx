@@ -9,6 +9,8 @@ import { useRouter } from 'next/navigation';
 import { EmotionCardList } from '../components/emotionCardList/emotionCardList';
 import { EmotionCardS } from '../components/emotionCardS/emotionCardS';
 import { SelectedEmotion } from '../components/selectedEmotion/selectedEmotion';
+import { DiaryView } from '../components/diaryView/diaryView';
+
 
 const sampleJournalData = [0, 1, 0, 0, 0, 0, 0];
 function EmotionResult() {
@@ -19,7 +21,7 @@ function EmotionResult() {
 
   return (
     <div className={styles.container}>
-      <SelectedEmotion />
+      <DiaryView />
     </div>
   );
 }

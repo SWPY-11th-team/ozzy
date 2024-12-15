@@ -1,0 +1,47 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* 화면 높이 100% */
+    background-color: #000; /* 배경색 설정 */
+    color: white;
+  }
+  
+  .content {
+    text-align: center;
+  }
+  
+  .image {
+    width: 250px; /* 이미지 크기 설정 */
+    margin-bottom: 20px;
+  }
+  
+  .textContainer {
+    margin-bottom: 40px;
+  }
+  
+  .title {
+    font-size: 24px;
+  }
+  
+  .description {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .button {
+    background-color: #0fe597; /* 버튼 색상 */
+    color: #121212;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #05b475;
+  }
+  
