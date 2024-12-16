@@ -3,11 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import moment from 'moment';
-
+import { fetchSingleDiary } from '../api/fetchSingleDiary';
 import 'react-calendar/dist/Calendar.css';
 import styles from './library.module.css';
 import NavigationBar from '../components/NavigationBar/Nav';
 import EmotionDonutChart from '../emotionDonut/pie';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+import { DiaryView } from '../components/diaryView/diaryView';
 
 // 감정 데이터 타입 정의
 type EmotionData = {
@@ -109,6 +111,11 @@ const EmotionCalendar = () => {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [emotionData, setEmotionData] = useState<EmotionData[]>([]);
   const [bubbleData, setBubbleData] = useState<BubbleEmotionData[]>([]);
+  const [selectedDate, setSelectedDate] = useState<String>(
+    new Date().toISOString().split('T')[0],
+  );
+  const [showDiaryData, setShowDiaryData] = useState<boolean>(false);
+  const [diaryData, setDiaryData] = useState<any>();
 
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth() + 1;
@@ -120,6 +127,11 @@ const EmotionCalendar = () => {
     if (value instanceof Date) {
       setCurrentDate(value); // 선택된 날짜를 상태로 설정
     }
+  };
+
+  const formatDateToKorean = (dateString: String): String => {
+    const [year, month, day] = dateString.split('-');
+    return `${parseInt(month)}월 ${parseInt(day)}일`;
   };
 
   const tileContent = ({ date }: { date: Date }) => {
@@ -203,6 +215,16 @@ const EmotionCalendar = () => {
     });
   };
 
+  // 날짜 클릭 핸들러
+  const handleDateClick = async (date: Date) => {
+    const formattedDate = date.toISOString().split('T')[0]; // YYYY-MM-DD 형식으로 변환
+    setSelectedDate(formattedDate);
+    const token = localStorage.getItem('accessToken');
+    const diary = await fetchSingleDiary(formattedDate, token);
+    setDiaryData(diary.body);
+    setShowDiaryData(true);
+  };
+
   useEffect(() => {
     const loadEmotions = async () => {
       const data = await fetchEmotionData();
@@ -223,7 +245,6 @@ const EmotionCalendar = () => {
       <NavigationBar></NavigationBar>
       <div className={styles.year}>{`${currentYear}년`}</div>
       <div className={styles.month}>{`${currentMonth}월`}</div>
-
       {/* 네비게이션 버튼 */}
       <div
         style={{
@@ -254,9 +275,23 @@ const EmotionCalendar = () => {
         locale="ko-KR"
         tileContent={tileContent}
         showNavigation={false}
+        onClickDay={handleDateClick}
       />
-      <h2>이번 달의 감정을 모아봤어요</h2>
-      <EmotionDonutChart emotions={bubbleData} />
+      {showDiaryData && (
+        <>
+          <div className={styles.selectedDate}>
+            {formatDateToKorean(selectedDate)}
+          </div>
+          <h3>오늘의 일기</h3>
+          <DiaryView data={diaryData} />
+        </>
+      )}
+      {!showDiaryData && (
+        <>
+          <h3>이번 달의 감정을 모아봤어요</h3>
+          <EmotionDonutChart emotions={bubbleData} />
+        </>
+      )}
     </div>
   );
 };

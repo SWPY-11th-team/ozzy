@@ -65,6 +65,12 @@
     background-color: #121212;
     border: 0;
 }
+
+.selectedDate {
+    opacity: 60%;
+    font-size: 14px;
+    margin-bottom: 0;
+}
 @media (max-width: 768px) {
 .react-calendar {
     font-size: 0.8rem; /* 작은 화면에서 글씨 크기 조정 */
